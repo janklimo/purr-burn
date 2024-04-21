@@ -36,7 +36,6 @@ const Data = () => {
 
   return (
     <div>
-      <h1>Real-Time Chat</h1>
       <div>
         {messages.map((message, index) => (
           <div key={index}>{message}</div>
