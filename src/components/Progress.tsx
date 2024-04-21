@@ -33,6 +33,7 @@ const Progress: FC<Props> = ({ supply }) => {
         <p className='text-accent text-xl font-mono'>
           {value.toLocaleString()}
         </p>
+        <p className='text-accent text-xl font-mono'>PURR</p>
       </div>
     </CircularProgressbarWithChildren>
   );

@@ -4,6 +4,7 @@ import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Marquee from 'react-fast-marquee';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -69,7 +70,7 @@ export default function HomePage() {
       </Head>
       <section className='bg-hl'>
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <div className='w-64 mb-4'>
+          <div className='w-48 sm:w-64 -mb-6 sm:-mb-8 z-10'>
             <Image
               src='/images/purr.png'
               width={400}
@@ -78,7 +79,17 @@ export default function HomePage() {
               alt='The cat has a hoodie'
             />
           </div>
-          <Progress supply={data?.circulatingSupply} />
+          <div className='mb-8'>
+            <Progress supply={data?.circulatingSupply} />
+          </div>
+          <div className='w-2/3 text-hlGray'>
+            <Marquee>
+              I can be a React component, multiple React components, or just
+              some text.
+              <p className='mr-4'>hi</p>
+              <p>there</p>
+            </Marquee>
+          </div>
         </div>
       </section>
     </main>
