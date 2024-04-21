@@ -3,7 +3,6 @@
 import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
-import purr from 'public/images/purr.png';
 
 import Data from '@/components/Data';
 import ArrowLink from '@/components/links/ArrowLink';
@@ -20,10 +19,10 @@ export default function HomePage() {
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
           <div className='w-64'>
             <Image
-              src={purr}
+              src='/images/purr.png'
               width={400}
               height={400}
-              placeholder='blur'
+              priority
               alt='The cat has a hoodie'
             />
           </div>
