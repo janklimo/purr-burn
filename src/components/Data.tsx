@@ -13,7 +13,7 @@ const Data = () => {
       socket.send(
         JSON.stringify({
           method: 'subscribe',
-          subscription: { type: 'activeSpotAssetCtx', coin: 'PURR/USDC' },
+          subscription: { type: 'activeAssetCtx', coin: 'PURR/USDC' },
         }),
       );
     });
