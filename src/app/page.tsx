@@ -4,13 +4,13 @@ import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import Marquee from 'react-fast-marquee';
 
 import 'react-circular-progressbar/dist/styles.css';
 
 import Progress from '@/components/Progress';
+import Stats from '@/components/Stats';
 
-interface MessageContext {
+export interface MessageContext {
   prevDayPx: string;
   dayNtlVlm: string;
   markPx: string;
@@ -82,14 +82,7 @@ export default function HomePage() {
           <div className='mb-8'>
             <Progress supply={data?.circulatingSupply} />
           </div>
-          <div className='w-2/3 text-hlGray'>
-            <Marquee>
-              I can be a React component, multiple React components, or just
-              some text.
-              <p className='mr-4'>hi</p>
-              <p>there</p>
-            </Marquee>
-          </div>
+          <Stats data={data} />
         </div>
       </section>
     </main>

@@ -24,7 +24,10 @@ export default {
           950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
         },
         dark: '#222222',
-        hl: '#03251F',
+        hl: {
+          light: '#163832',
+          DEFAULT: '#03251F',
+        },
         accent: '#98FCE4',
         hlGray: '#bcc4c2',
       },
