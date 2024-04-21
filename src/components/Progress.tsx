@@ -7,6 +7,7 @@ const Progress = () => {
   return (
     <CircularProgressbarWithChildren
       value={66}
+      strokeWidth={9}
       styles={buildStyles({
         strokeLinecap: 'round',
 
