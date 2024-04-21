@@ -25,6 +25,7 @@ export default {
         },
         dark: '#222222',
         hl: '#03251F',
+        accent: '#98FCE4',
       },
       keyframes: {
         flicker: {
