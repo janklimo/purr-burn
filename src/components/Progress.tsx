@@ -10,7 +10,7 @@ interface Props {
 
 const Progress: FC<Props> = ({ supply }) => {
   if (typeof supply !== 'string')
-    return <p className='text-hlGray text-xl'>Loading...</p>;
+    return <p className='text-hlGray text-xl mt-10'>Loading...</p>;
 
   const value = Number(parseFloat(supply).toFixed(2));
 
