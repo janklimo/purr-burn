@@ -3,21 +3,73 @@
 import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import 'react-circular-progressbar/dist/styles.css';
 
-import Data from '@/components/Data';
 import Progress from '@/components/Progress';
 
+interface MessageContext {
+  prevDayPx: string;
+  dayNtlVlm: string;
+  markPx: string;
+  midPx: string;
+  circulatingSupply: string;
+}
+
+interface MessageData {
+  channel: string;
+  data: {
+    coin: string;
+    ctx?: MessageContext;
+  };
+}
+
 export default function HomePage() {
+  const [data, setData] = useState<MessageContext | undefined>();
+
+  useEffect(() => {
+    const socket = new WebSocket('wss://api-ui.hyperliquid.xyz/ws');
+
+    // Listen for the connection to open and send the message
+    socket.addEventListener('open', () => {
+      // Send the message to the server
+      socket.send(
+        JSON.stringify({
+          method: 'subscribe',
+          subscription: { type: 'activeAssetCtx', coin: 'PURR/USDC' },
+        }),
+      );
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', (event) => {
+      const data: MessageData = JSON.parse(event.data);
+
+      if (data.data.ctx) {
+        setData(data.data.ctx);
+      }
+    });
+
+    // Handle any errors that occur
+    socket.addEventListener('error', (error) => {
+      console.error('WebSocket Error: ', error);
+    });
+
+    // Clean up function
+    return () => {
+      socket.close();
+    };
+  }, []);
+
   return (
     <main>
       <Head>
-        <title>Hi</title>
+        <title>PURR Burn</title>
       </Head>
       <section className='bg-hl'>
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <div className='w-64'>
+          <div className='w-64 mb-4'>
             <Image
               src='/images/purr.png'
               width={400}
@@ -26,8 +78,7 @@ export default function HomePage() {
               alt='The cat has a hoodie'
             />
           </div>
-          <Progress />
-          <Data />
+          <Progress supply={data?.circulatingSupply} />
         </div>
       </section>
     </main>

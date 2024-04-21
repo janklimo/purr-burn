@@ -1,24 +1,25 @@
+import { FC } from 'react';
 import {
   buildStyles,
   CircularProgressbarWithChildren,
 } from 'react-circular-progressbar';
 
-const Progress = () => {
+interface Props {
+  supply: string | undefined;
+}
+
+const Progress: FC<Props> = ({ supply }) => {
+  if (typeof supply !== 'string')
+    return <p className='text-hlGray text-xl'>Loading...</p>;
+
+  const value = Number(parseFloat(supply).toFixed(2));
+
   return (
     <CircularProgressbarWithChildren
-      value={66}
+      value={(value / 1_000_000_000) * 100}
       strokeWidth={9}
       styles={buildStyles({
         strokeLinecap: 'round',
-
-        // Text size
-        textSize: '16px',
-
-        // How long animation takes to go from one percentage to another, in seconds
-        pathTransitionDuration: 0.5,
-
-        // Can specify path transition in more detail, or remove it entirely
-        // pathTransition: 'none',
 
         // Colors
         pathColor: '#98FCE4',
@@ -27,8 +28,11 @@ const Progress = () => {
         backgroundColor: '#163832',
       })}
     >
-      <div style={{ fontSize: 12, marginTop: -5 }}>
-        <strong>66%</strong>
+      <div>
+        <p className='text-hlGray text-sm mb-2'>Circulating Supply</p>
+        <p className='text-accent text-xl font-mono'>
+          {value.toLocaleString()}
+        </p>
       </div>
     </CircularProgressbarWithChildren>
   );
