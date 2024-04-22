@@ -80,10 +80,10 @@ export default function HomePage() {
               alt='The cat has a hoodie'
             />
           </div>
-          <div className='mb-8'>
+          <div className='mb-4'>
             <Progress data={data} />
           </div>
-          <div className='mb-8 w-full sm:w-3/4'>
+          <div className='mb-6 w-full sm:w-3/4'>
             <Stats data={data} />
           </div>
           <Peers data={data} />

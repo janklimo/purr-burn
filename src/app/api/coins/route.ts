@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 
 const coins = {
+  BONK: 23095,
+  FLOKI: 10804,
+  PEPE: 24478,
+  POPCAT: 28782,
   SHIB: 5994,
   WIF: 28752,
 };
@@ -24,6 +28,10 @@ export async function GET() {
 
     const data = await response.json();
     const result = {
+      BONK: data.data[coins.BONK]?.quote.USD.fully_diluted_market_cap,
+      FLOKI: data.data[coins.FLOKI]?.quote.USD.fully_diluted_market_cap,
+      PEPE: data.data[coins.PEPE]?.quote.USD.fully_diluted_market_cap,
+      POPCAT: data.data[coins.POPCAT]?.quote.USD.fully_diluted_market_cap,
       SHIB: data.data[coins.SHIB]?.quote.USD.fully_diluted_market_cap,
       WIF: data.data[coins.WIF]?.quote.USD.fully_diluted_market_cap,
     };
