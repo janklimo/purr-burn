@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 import 'react-circular-progressbar/dist/styles.css';
 
+import Peers from '@/components/Peers';
 import Progress from '@/components/Progress';
 import Stats from '@/components/Stats';
 
@@ -70,7 +71,7 @@ export default function HomePage() {
       </Head>
       <section className='bg-hl'>
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <div className='w-48 sm:w-64 -mb-6 sm:-mb-8 z-10'>
+          <div className='w-48 md:w-56 -mb-6 md:-mb-7 z-10'>
             <Image
               src='/images/purr.png'
               width={400}
@@ -82,7 +83,10 @@ export default function HomePage() {
           <div className='mb-8'>
             <Progress data={data} />
           </div>
-          <Stats data={data} />
+          <div className='mb-8 w-full sm:w-3/4'>
+            <Stats data={data} />
+          </div>
+          <Peers data={data} />
         </div>
       </section>
     </main>

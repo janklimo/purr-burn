@@ -30,6 +30,7 @@ export default {
         },
         accent: '#98FCE4',
         hlGray: '#bcc4c2',
+        white: '#f6fefd',
         red: '#ed7088',
       },
       keyframes: {
