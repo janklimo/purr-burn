@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 const coins = {
   BONK: 23095,
+  DOGE: 74,
   FLOKI: 10804,
   MEW: 30126,
   MOG: 27659,
