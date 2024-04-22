@@ -3,20 +3,42 @@ import Marquee from 'react-fast-marquee';
 
 import { MessageContext } from '@/app/page';
 
+const PriceChange: FC<{ change: number }> = ({ change }) => {
+  if (change >= 1) {
+    const percent = change - 1;
+
+    return (
+      <span className='text-accent'>
+        &#x25B2;{' '}
+        {percent.toLocaleString(undefined, {
+          style: 'percent',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
+      </span>
+    );
+  } else {
+    const percent = 1 - change;
+
+    return (
+      <span className='text-red'>
+        &#x25BC;{' '}
+        {percent.toLocaleString(undefined, {
+          style: 'percent',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
+      </span>
+    );
+  }
+};
+
 interface Props {
   data: MessageContext | undefined;
 }
 
 const Stats: FC<Props> = ({ data }) => {
   if (!data) return null;
-
-  //   {
-  //     "prevDayPx": "0.14586",
-  //     "dayNtlVlm": "30904561.76848998",
-  //     "markPx": "0.15216",
-  //     "midPx": "0.152125",
-  //     "circulatingSupply": "599755866.52856004"
-  // }
 
   const supply = parseFloat(data.circulatingSupply);
   const burntAmount = 600_000_000 - supply;
@@ -39,7 +61,10 @@ const Stats: FC<Props> = ({ data }) => {
         <p className='text-gray-500 mx-3'>/</p>
         {/* Price */}
         <p className='text-hlGray text-sm mr-3'>Price:</p>
-        <p className='text-accent text-sm font-mono'>{markPrice.toFixed(5)}</p>
+        <p className='text-accent text-sm font-mono'>
+          {markPrice.toFixed(5)}{' '}
+          <PriceChange change={markPrice / previousDayPrice} />
+        </p>
         <p className='text-gray-500 mx-3'>/</p>
         {/* Volume */}
         <p className='text-hlGray text-sm mr-3'>Daily volume:</p>
