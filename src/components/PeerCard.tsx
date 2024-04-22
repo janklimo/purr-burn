@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -30,7 +31,14 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple }) => {
         })}
       </p>
       <p className='text-gray-500 mx-2'>/</p>
-      <p className='text-accent font-bold'>&#x25B2; {multiple.toFixed(2)}x</p>
+      <p
+        className={clsx(
+          multiple >= 1 ? 'text-accent' : 'text-red',
+          'font-bold',
+        )}
+      >
+        {multiple >= 1 ? '\u25B2' : '\u25BC'} {multiple.toFixed(2)}x
+      </p>
     </div>
   );
 };
