@@ -18,20 +18,44 @@ const Stats: FC<Props> = ({ data }) => {
   //     "circulatingSupply": "599755866.52856004"
   // }
 
+  const supply = parseFloat(data.circulatingSupply);
+  const burntAmount = 600_000_000 - supply;
+  const markPrice = parseFloat(data.markPx);
+  const previousDayPrice = parseFloat(data.prevDayPx);
+  const volume = parseFloat(data.dayNtlVlm);
+
   return (
     <div className='bg-hl-light p-2 mt-4 w-full sm:w-3/4 text-hlGray'>
-      <Marquee>
+      <Marquee pauseOnHover>
+        {/* Burnt from trading */}
         <p className='text-hlGray text-sm mr-3'>Burn from trading fees:</p>
-        <p className='text-accent text-sm font-mono'>400,000 PURR</p>
+        <p className='text-accent text-sm font-mono'>
+          {burntAmount.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          PURR
+        </p>
         <p className='text-gray-500 mx-3'>/</p>
-        <p className='text-hlGray text-sm mr-3'>Burn from trading fees:</p>
-        <p className='text-accent text-sm font-mono'>400,000 PURR</p>
+        {/* Price */}
+        <p className='text-hlGray text-sm mr-3'>Price:</p>
+        <p className='text-accent text-sm font-mono'>{markPrice.toFixed(5)}</p>
         <p className='text-gray-500 mx-3'>/</p>
-        <p className='text-hlGray text-sm mr-3'>Burn from trading fees:</p>
-        <p className='text-accent text-sm font-mono'>400,000 PURR</p>
+        {/* Volume */}
+        <p className='text-hlGray text-sm mr-3'>Daily volume:</p>
+        <p className='text-accent text-sm font-mono'>
+          {volume.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          PURR
+        </p>
         <p className='text-gray-500 mx-3'>/</p>
-        <p className='text-hlGray text-sm mr-3'>Burn from trading fees:</p>
-        <p className='text-accent text-sm font-mono'>400,000 PURR</p>
+        {/* Market cap */}
+        <p className='text-hlGray text-sm mr-3'>Market cap:</p>
+        <p className='text-accent text-sm font-mono'>
+          {Number((markPrice * supply).toFixed()).toLocaleString()} USDC
+        </p>
         <p className='text-gray-500 mx-3'>/</p>
       </Marquee>
     </div>

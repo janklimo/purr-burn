@@ -80,7 +80,7 @@ export default function HomePage() {
             />
           </div>
           <div className='mb-8'>
-            <Progress supply={data?.circulatingSupply} />
+            <Progress data={data} />
           </div>
           <Stats data={data} />
         </div>
