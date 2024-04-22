@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import * as React from 'react';
 
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html>
       <body>{children}</body>
+      <Analytics />
     </html>
   );
 }
