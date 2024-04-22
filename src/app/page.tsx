@@ -70,7 +70,7 @@ export default function HomePage() {
         <title>PURR Burn</title>
       </Head>
       <section className='bg-hl'>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
+        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-4 text-center'>
           <div className='w-48 md:w-56 -mb-6 md:-mb-7 z-10'>
             <Image
               src='/images/purr.png'
