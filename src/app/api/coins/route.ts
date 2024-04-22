@@ -12,6 +12,13 @@ const coins = {
 const url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest';
 const ids = Object.values(coins).join(',');
 
+const marketCap = (data: any, symbol: keyof typeof coins): number => {
+  return (
+    data.data[coins[symbol]]?.self_reported_market_cap ||
+    data.data[coins[symbol]]?.quote.USD.fully_diluted_market_cap
+  );
+};
+
 export async function GET() {
   try {
     const response = await fetch(`${url}?id=${ids}`, {
@@ -28,12 +35,12 @@ export async function GET() {
 
     const data = await response.json();
     const result = {
-      BONK: data.data[coins.BONK]?.quote.USD.fully_diluted_market_cap,
-      FLOKI: data.data[coins.FLOKI]?.quote.USD.fully_diluted_market_cap,
-      PEPE: data.data[coins.PEPE]?.quote.USD.fully_diluted_market_cap,
-      POPCAT: data.data[coins.POPCAT]?.quote.USD.fully_diluted_market_cap,
-      SHIB: data.data[coins.SHIB]?.quote.USD.fully_diluted_market_cap,
-      WIF: data.data[coins.WIF]?.quote.USD.fully_diluted_market_cap,
+      POPCAT: marketCap(data, 'POPCAT'),
+      BONK: marketCap(data, 'BONK'),
+      FLOKI: marketCap(data, 'FLOKI'),
+      PEPE: marketCap(data, 'PEPE'),
+      WIF: marketCap(data, 'WIF'),
+      SHIB: marketCap(data, 'SHIB'),
     };
 
     return NextResponse.json(result, {
