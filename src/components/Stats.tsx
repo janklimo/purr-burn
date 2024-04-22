@@ -26,7 +26,7 @@ const Stats: FC<Props> = ({ data }) => {
 
   return (
     <div className='bg-hl-light p-2 mt-4 w-full sm:w-3/4 text-hlGray'>
-      <Marquee pauseOnHover>
+      <Marquee pauseOnHover gradient gradientColor='#163832' gradientWidth={18}>
         {/* Burnt from trading */}
         <p className='text-hlGray text-sm mr-3'>Burn from trading fees:</p>
         <p className='text-accent text-sm font-mono'>
