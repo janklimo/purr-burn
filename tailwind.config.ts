@@ -26,11 +26,13 @@ export default {
         dark: '#222222',
         hl: {
           light: '#163832',
-          DEFAULT: '#03251F',
+          dark: '#03251F',
+          primary: '#50d2c1',
         },
         accent: '#98FCE4',
         hlGray: '#bcc4c2',
         white: '#f6fefd',
+        black: '#02231e',
         red: '#ed7088',
       },
       keyframes: {

@@ -36,7 +36,13 @@ export async function GET() {
       WIF: data.data[coins.WIF]?.quote.USD.fully_diluted_market_cap,
     };
 
-    return NextResponse.json(result);
+    return NextResponse.json(result, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=120',
+        'CDN-Cache-Control': 'public, s-maxage=120',
+        'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
+      },
+    });
   } catch (error) {
     return NextResponse.json(
       { message: (error as Error).message },

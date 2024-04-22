@@ -34,8 +34,9 @@ const Peers: FC<Props> = ({ data }) => {
     fetchData();
   }, []);
 
-  if (!coins.length) return null;
   if (!data) return null;
+  if (!coins.length)
+    return <p className='text-hlGray text-xl mt-10'>Loading...</p>;
 
   const markPrice = parseFloat(data.markPx);
   const supply = parseFloat(data.circulatingSupply);

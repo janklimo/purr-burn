@@ -10,6 +10,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import Peers from '@/components/Peers';
 import Progress from '@/components/Progress';
 import Stats from '@/components/Stats';
+import TradeButton from '@/components/TradeButton';
 
 export interface MessageContext {
   prevDayPx: string;
@@ -69,7 +70,7 @@ export default function HomePage() {
       <Head>
         <title>PURR Burn</title>
       </Head>
-      <section className='bg-hl'>
+      <section className='bg-hl-dark'>
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-4 text-center'>
           <div className='w-48 md:w-56 -mb-6 md:-mb-7 z-10'>
             <Image
@@ -86,7 +87,23 @@ export default function HomePage() {
           <div className='mb-6 w-full sm:w-3/4'>
             <Stats data={data} />
           </div>
-          <Peers data={data} />
+          <div className='my-4'>
+            <Peers data={data} />
+          </div>
+          <div className='mt-6 mb-8'>
+            <TradeButton />
+          </div>
+          <div className='text-white mt-3 text-center text-sm'>
+            By{' '}
+            <a
+              href='https://twitter.com/janklimo'
+              className='text-hl-primary hover:text-accent transition-all'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              @janklimo
+            </a>
+          </div>
         </div>
       </section>
     </main>
