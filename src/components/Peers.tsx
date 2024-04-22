@@ -19,12 +19,13 @@ const Peers: FC<Props> = ({ data }) => {
       try {
         const response = await fetch('/api/coins');
         const data: { [key: string]: number } = await response.json();
-        const formattedData = Object.entries(data).map(
-          ([symbol, marketCap]) => ({
+        // Sort lowest to highest market cap.
+        const formattedData = Object.entries(data)
+          .map(([symbol, marketCap]) => ({
             symbol,
             marketCap,
-          }),
-        );
+          }))
+          .sort((a, b) => a.marketCap - b.marketCap);
         setCoins(formattedData);
       } catch (error) {
         console.error('Failed to fetch coins', error);
