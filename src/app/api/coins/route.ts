@@ -3,9 +3,12 @@ import { NextResponse } from 'next/server';
 const coins = {
   BONK: 23095,
   FLOKI: 10804,
+  MEW: 30126,
+  MOG: 27659,
   PEPE: 24478,
   POPCAT: 28782,
   SHIB: 5994,
+  WEN: 29175,
   WIF: 28752,
 };
 
@@ -14,10 +17,14 @@ const ids = Object.values(coins).join(',');
 
 const marketCap = (data: any, symbol: keyof typeof coins): number => {
   return (
-    data.data[coins[symbol]]?.self_reported_market_cap ||
-    data.data[coins[symbol]]?.quote.USD.fully_diluted_market_cap
+    data.data[coins[symbol]]?.quote.USD.fully_diluted_market_cap ||
+    data.data[coins[symbol]]?.self_reported_market_cap
   );
 };
+
+interface MarketCapResult {
+  [key: string]: number;
+}
 
 export async function GET() {
   try {
@@ -34,14 +41,10 @@ export async function GET() {
     }
 
     const data = await response.json();
-    const result = {
-      POPCAT: marketCap(data, 'POPCAT'),
-      BONK: marketCap(data, 'BONK'),
-      FLOKI: marketCap(data, 'FLOKI'),
-      PEPE: marketCap(data, 'PEPE'),
-      WIF: marketCap(data, 'WIF'),
-      SHIB: marketCap(data, 'SHIB'),
-    };
+    const result = Object.keys(coins).reduce((acc: MarketCapResult, key) => {
+      acc[key] = marketCap(data, key as keyof typeof coins);
+      return acc;
+    }, {});
 
     return NextResponse.json(result, {
       headers: {
