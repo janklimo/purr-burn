@@ -16,6 +16,7 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple }) => {
           width={64}
           height={64}
           priority
+          className='rounded-full'
           alt={symbol}
         />
       </div>
