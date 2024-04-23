@@ -69,17 +69,22 @@ const Stats: FC<Props> = ({ data }) => {
         {/* Volume */}
         <p className='text-hlGray text-sm mr-3'>Daily volume:</p>
         <p className='text-accent text-sm font-mono'>
-          {volume.toLocaleString(undefined, {
+          {volume.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          })}{' '}
-          PURR
+          })}
         </p>
         <p className='text-gray-500 mx-3'>/</p>
         {/* Market cap */}
         <p className='text-hlGray text-sm mr-3'>Market cap:</p>
         <p className='text-accent text-sm font-mono'>
-          {Number((markPrice * supply).toFixed()).toLocaleString()} USDC
+          {(markPrice * supply).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          })}
         </p>
         <p className='text-gray-500 mx-3'>/</p>
       </Marquee>
