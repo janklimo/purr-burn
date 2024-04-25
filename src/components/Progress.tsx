@@ -4,6 +4,8 @@ import {
   buildStyles,
 } from 'react-circular-progressbar';
 
+import Counter from '@/components/Counter';
+
 import { MessageContext } from '@/app/page';
 
 interface Props {
@@ -34,16 +36,12 @@ const Progress: FC<Props> = ({ data }) => {
           textColor: '#f88',
           trailColor: '#163832',
           backgroundColor: '#163832',
+          pathTransitionDuration: 1,
         })}
       >
         <div>
           <p className='text-hlGray text-sm mb-2'>Circulating Supply</p>
-          <p className='text-accent text-xl font-mono'>
-            {supply.toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}{' '}
-          </p>
+          <Counter end={supply} />
           <p className='text-accent text-xl font-mono'>PURR</p>
         </div>
       </CircularProgressbarWithChildren>
