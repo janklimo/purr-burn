@@ -43,9 +43,9 @@ const Progress: FC<Props> = ({ data }) => {
           <p className='text-hlGray text-sm mb-2'>Circulating Supply</p>
           <Counter end={supply} />
           <p className='text-accent text-xl font-mono'>PURR</p>
-          <div className='w-10 z-10 absolute -bottom-5 -right-3'>
+          <div className='w-10 z-10 absolute -bottom-5 -right-3 transform scale-x-[-1] -rotate-90'>
             <Image
-              src='/images/arrow-right.svg'
+              src='/images/arrow.svg'
               width={100}
               height={100}
               priority
