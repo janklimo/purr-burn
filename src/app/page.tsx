@@ -79,6 +79,7 @@ export default function HomePage() {
               height={400}
               priority
               alt='The cat has a hoodie'
+              title='The cat has a hoodie'
             />
           </div>
           <div className='mb-4'>
