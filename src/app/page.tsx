@@ -93,6 +93,18 @@ export default function HomePage() {
           </div>
           <div className='mt-6 mb-8'>
             <TradeButton />
+            <p className='text-gray-400 text-sm mt-3'>
+              Using this referral link gives you a{' '}
+              <a
+                href='https://hyperliquid.gitbook.io/hyperliquid-docs/referrals'
+                className='text-hl-primary hover:text-accent transition-all'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                4% discount
+              </a>{' '}
+              on your taker fees.
+            </p>
           </div>
           <div className='text-white mt-3 text-center text-sm'>
             By{' '}
