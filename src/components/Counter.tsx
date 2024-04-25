@@ -15,7 +15,7 @@ const Counter: FC<Props> = ({ end }) => {
   return (
     <animated.div className='text-accent text-xl font-mono'>
       {spring.number.to((value) =>
-        value.toLocaleString(undefined, {
+        value.toLocaleString('en-US', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         }),

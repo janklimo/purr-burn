@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC, useEffect, useState } from 'react';
 import {
   CircularProgressbarWithChildren,
@@ -33,16 +34,25 @@ const Progress: FC<Props> = ({ data }) => {
 
           // Colors
           pathColor: '#98FCE4',
-          textColor: '#f88',
           trailColor: '#163832',
-          backgroundColor: '#163832',
+          // This should match the duration of the counter spring animation
           pathTransitionDuration: 1,
         })}
       >
-        <div>
+        <div className='relative'>
           <p className='text-hlGray text-sm mb-2'>Circulating Supply</p>
           <Counter end={supply} />
           <p className='text-accent text-xl font-mono'>PURR</p>
+          <div className='w-10 z-10 absolute -bottom-5 -right-3'>
+            <Image
+              src='/images/arrow-right.svg'
+              width={100}
+              height={100}
+              priority
+              alt='The cat has a hoodie'
+              title='The cat has a hoodie'
+            />
+          </div>
         </div>
       </CircularProgressbarWithChildren>
       {!data && <p className='text-hlGray text-xl mt-10'>Loading...</p>}
