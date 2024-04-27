@@ -14,16 +14,22 @@ const theme: AgChartTheme = {
   },
 };
 
-function getData() {
-  return [
-    { asset: 'Circulating Supply', amount: 599584511, radius: 1 },
-    { asset: 'Burn From Trading Fees', amount: 3015488, radius: 1.5 },
-    { asset: 'Initial Burn', amount: 400000000, radius: 1 },
-  ];
+interface Props {
+  supply: number;
 }
 
-const Chart: FC = () => {
+const Chart: FC<Props> = ({ supply }) => {
   const { width } = useWindowSize();
+
+  const data = [
+    { asset: 'Circulating Supply', amount: supply, radius: 1 },
+    {
+      asset: 'Burn From Trading Fees',
+      amount: 600_000_000 - supply,
+      radius: 1.5,
+    },
+    { asset: 'Initial Burn', amount: 400_000_000, radius: 1 },
+  ];
 
   const seriesOptions: AgDonutSeriesOptions = {
     type: 'donut',
@@ -42,9 +48,12 @@ const Chart: FC = () => {
         margin: 10,
       },
       {
-        text: '599,584,508.24',
+        text: supply.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }),
         margin: 4,
-        fontSize: Number(width) > 800 ? 24 : 18,
+        fontSize: Number(width) > 768 ? 24 : 18,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
         color: '#98FCE4',
@@ -52,7 +61,7 @@ const Chart: FC = () => {
       {
         text: 'PURR',
         margin: 8,
-        fontSize: Number(width) > 800 ? 22 : 16,
+        fontSize: Number(width) > 768 ? 22 : 16,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
         color: '#98FCE4',
@@ -61,9 +70,9 @@ const Chart: FC = () => {
   };
 
   const chartOptions: AgChartOptions = {
-    data: getData(),
-    width: Number(width) > 800 ? 1120 : 320,
-    height: Number(width) > 800 ? 560 : 384,
+    data,
+    width: Number(width) > 768 ? 1120 : 320,
+    height: Number(width) > 768 ? 560 : 384,
     theme,
     background: {
       fill: '#03251F',

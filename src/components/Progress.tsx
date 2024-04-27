@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 
 import Chart from '@/components/Chart';
+import Skeleton from '@/components/Skeleton';
 
 import { MessageContext } from '@/app/page';
 
@@ -17,14 +18,10 @@ const Progress: FC<Props> = ({ data }) => {
     setSupply(parseFloat(data.circulatingSupply));
   }, [data]);
 
-  const progress = (supply / 1_000_000_000) * 100;
+  if (!data)
+    return <Skeleton className='h-96 w-80 md:h-[35rem] md:w-[70rem]' />;
 
-  return (
-    <>
-      <Chart />
-      {!data && <p className='text-hlGray text-xl mt-10'>Loading...</p>}
-    </>
-  );
+  return <Chart supply={supply} />;
 };
 
 export default Progress;
