@@ -82,7 +82,7 @@ export default function HomePage() {
               title='The cat has a hoodie'
             />
           </div>
-          <div className='mb-4 h-96 md:h-[35rem] chart-container'>
+          <div className='mb-4 h-96 w-80 md:h-[35rem] md:w-[70rem]'>
             <Progress data={data} />
           </div>
           <div className='mb-6 w-full sm:w-3/4'>

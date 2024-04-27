@@ -62,6 +62,8 @@ const Chart: FC = () => {
 
   const chartOptions: AgChartOptions = {
     data: getData(),
+    width: Number(width) > 800 ? 1120 : 320,
+    height: Number(width) > 800 ? 560 : 384,
     theme,
     background: {
       fill: '#03251F',
