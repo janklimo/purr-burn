@@ -26,7 +26,7 @@ const Chart: FC<Props> = ({ supply }) => {
     {
       asset: 'Burn From Trading Fees',
       amount: 600_000_000 - supply,
-      radius: 1.5,
+      radius: 1.4,
     },
     { asset: 'Initial Burn', amount: 400_000_000, radius: 1 },
   ];
@@ -70,10 +70,7 @@ const Chart: FC<Props> = ({ supply }) => {
     tooltip: {
       renderer: (params) => ({
         title: params.datum.asset,
-        content: params.datum.amount.toLocaleString('en-US', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
+        content: `${params.datum.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`,
       }),
     },
   };
