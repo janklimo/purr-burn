@@ -10,7 +10,7 @@ import { FC } from 'react';
 const theme: AgChartTheme = {
   palette: {
     fills: ['#98FCE4', '#f69318', '#163832'],
-    strokes: ['#163832'],
+    strokes: ['#98FCE4', '#f69318', '#163832'],
   },
 };
 
@@ -67,6 +67,15 @@ const Chart: FC<Props> = ({ supply }) => {
         color: '#98FCE4',
       },
     ],
+    tooltip: {
+      renderer: (params) => ({
+        title: params.datum.asset,
+        content: params.datum.amount.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }),
+      }),
+    },
   };
 
   const chartOptions: AgChartOptions = {
