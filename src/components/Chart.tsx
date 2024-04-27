@@ -1,9 +1,11 @@
+import { useWindowSize } from '@uidotdev/usehooks';
 import {
   AgChartOptions,
   AgChartTheme,
   AgDonutSeriesOptions,
 } from 'ag-charts-community';
 import { AgChartsReact } from 'ag-charts-react';
+import { FC } from 'react';
 
 const theme: AgChartTheme = {
   palette: {
@@ -20,7 +22,9 @@ function getData() {
   ];
 }
 
-const Chart = () => {
+const Chart: FC = () => {
+  const { width } = useWindowSize();
+
   const seriesOptions: AgDonutSeriesOptions = {
     type: 'donut',
     calloutLabelKey: 'asset',
@@ -40,7 +44,7 @@ const Chart = () => {
       {
         text: '599,584,508.24',
         margin: 4,
-        fontSize: 26,
+        fontSize: Number(width) > 800 ? 24 : 18,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
         color: '#98FCE4',
@@ -48,7 +52,7 @@ const Chart = () => {
       {
         text: 'PURR',
         margin: 8,
-        fontSize: 22,
+        fontSize: Number(width) > 800 ? 22 : 16,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
         color: '#98FCE4',
