@@ -2,7 +2,15 @@ import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import * as React from 'react';
 
+import '@/styles/colors.css';
 import '@/styles/globals.css';
+import '@ag-grid-community/styles/ag-grid.css';
+import '@ag-grid-community/styles/ag-theme-material.css';
+// Must come after other ag-grid CSS imports
+import '@/styles/ag-grid.css';
+
+import MobileCallout from '@/components/MobileCallout';
+import Navbar from '@/components/Navbar';
 
 import { siteConfig } from '@/constant/config';
 
@@ -55,7 +63,11 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body className='bg-hl-dark hyperliquid'>
+        <MobileCallout />
+        <Navbar />
+        {children}
+      </body>
       <Analytics />
     </html>
   );

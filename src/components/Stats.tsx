@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Marquee from 'react-fast-marquee';
 
-import { MessageContext } from '@/app/page';
+import useWebSocketData from '@/app/hooks/use-websocket-data';
 
 const PriceChange: FC<{ change: number }> = ({ change }) => {
   if (change >= 1) {
@@ -34,7 +34,7 @@ const PriceChange: FC<{ change: number }> = ({ change }) => {
 };
 
 interface Props {
-  data: MessageContext | undefined;
+  data: ReturnType<typeof useWebSocketData>;
 }
 
 const Stats: FC<Props> = ({ data }) => {

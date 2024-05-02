@@ -3,10 +3,10 @@ import { FC, useEffect, useState } from 'react';
 
 import PeerCard from '@/components/PeerCard';
 
-import { MessageContext } from '@/app/page';
+import useWebSocketData from '@/app/hooks/use-websocket-data';
 
 interface Props {
-  data: MessageContext | undefined;
+  data: ReturnType<typeof useWebSocketData>;
 }
 
 const Peers: FC<Props> = ({ data }) => {

@@ -34,6 +34,10 @@ export default {
         white: '#f6fefd',
         black: '#02231e',
         red: '#ed7088',
+        input: {
+          background: '#0E1A1E',
+          border: '#3E3E3E',
+        },
       },
       keyframes: {
         flicker: {

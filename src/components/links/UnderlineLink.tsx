@@ -7,22 +7,23 @@ import UnstyledLink, {
 } from '@/components/links/UnstyledLink';
 
 const UnderlineLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
-  ({ children, className, ...rest }, ref) => {
+  ({ children, className, dotted = true, ...rest }, ref) => {
     return (
       <UnstyledLink
         ref={ref}
         {...rest}
         className={cn(
-          'animated-underline custom-link inline-flex items-center font-medium',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-offset-2',
-          'border-dark border-b border-dotted hover:border-black/0',
-          className
+          'animated-underline font-medium pb-1',
+          'focus-visible:ring-hl-primary focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-offset-2',
+          'border-hl-primary border-b hover:border-black/0',
+          dotted && 'border-dotted',
+          className,
         )}
       >
         {children}
       </UnstyledLink>
     );
-  }
+  },
 );
 
 export default UnderlineLink;
