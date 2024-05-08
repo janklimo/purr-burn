@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 import Chart from '@/components/leaderboard/Chart';
 import Table from '@/components/leaderboard/Table';
@@ -36,7 +37,9 @@ export default function Leaderboard() {
           </div>
         </div>
         <div className='relative w-full md:w-3/4 max-w-5xl mx-auto mb-10'>
-          <Chart />
+          <Suspense>
+            <Chart />
+          </Suspense>
         </div>
         <TradeCallout />
       </section>
