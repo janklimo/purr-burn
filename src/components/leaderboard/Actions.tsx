@@ -5,10 +5,12 @@ import { FC } from 'react';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
 
+import useAddressFromURL from '@/app/hooks/use-address-from-url';
 import { useAddressStore } from '@/state/stores';
 
 const Actions: FC<CustomCellRendererProps> = (params) => {
   const setAddress = useAddressStore((state) => state.setAddress);
+  const { setAddressParam } = useAddressFromURL();
 
   return (
     <div className='relative'>
@@ -23,6 +25,7 @@ const Actions: FC<CustomCellRendererProps> = (params) => {
         onClick={(event) => {
           event.preventDefault();
           setAddress(params.value);
+          setAddressParam(params.value);
         }}
       >
         Zoom in 🔎

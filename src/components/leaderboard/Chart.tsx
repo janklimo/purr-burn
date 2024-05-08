@@ -15,6 +15,7 @@ import { trimAddress } from '@/lib/formatters';
 
 import Button from '@/components/buttons/Button';
 
+import useAddressFromURL from '@/app/hooks/use-address-from-url';
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 import { apiHost } from '@/constant/config';
 import { useAddressStore } from '@/state/stores';
@@ -116,26 +117,27 @@ const lineSeriesOptions: AgLineSeriesOptions = {
 const Chart = () => {
   const address = useAddressStore((state) => state.address);
   const setAddress = useAddressStore((state) => state.setAddress);
+  const { addressParam, setAddressParam } = useAddressFromURL();
   const [data, setData] = useState<UserSnapshotData | undefined>(undefined);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [isFailed, setIsFailed] = useState<boolean>(false);
   const [currentAddress, setCurrentAddress] = useState<string | undefined>('');
   const wsData = useWebSocketData();
 
-  useEffect(() => {
-    if (!address) return;
+  const targetAddress = address || addressParam;
 
-    setCurrentAddress(address);
-  }, [address]);
+  useEffect(() => {
+    if (targetAddress) setCurrentAddress(targetAddress);
+  }, [targetAddress]);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!address) return;
+      if (!targetAddress) return;
 
       setIsFetching(true);
       setIsFailed(false);
 
-      fetch(`${apiHost}/users/${address}`)
+      fetch(`${apiHost}/users/${targetAddress}`)
         .then<UserSnapshotData>((resp) => resp.json())
         .then((data) => {
           setData(data);
@@ -146,9 +148,9 @@ const Chart = () => {
     };
 
     fetchData();
-  }, [address]);
+  }, [targetAddress]);
 
-  const isReady = address && !isFailed && !isFetching;
+  const isReady = targetAddress && !isFailed && !isFetching;
 
   return (
     <div>
@@ -158,6 +160,7 @@ const Chart = () => {
           onSubmit={(event) => {
             event.preventDefault();
             setAddress(currentAddress as string);
+            setAddressParam(currentAddress as string);
           }}
           className='flex w-full md:w-3/5'
         >
@@ -194,7 +197,7 @@ const Chart = () => {
                   </div>
                 )}
                 <p className='text-center text-white text-2xl font-bold mt-3 mb-1'>
-                  {trimAddress(address)}{' '}
+                  {trimAddress(targetAddress)}{' '}
                 </p>
                 <p className='text-center text-xs text-hlGray mb-6'>
                   is PURR holder
@@ -266,7 +269,7 @@ const Chart = () => {
             options={{
               theme,
               background: { fill: '#F5FEFD' },
-              title: { text: `Stats for ${trimAddress(address)}` },
+              title: { text: `Stats for ${trimAddress(targetAddress)}` },
               padding: {
                 top: 40,
                 right: 25,
