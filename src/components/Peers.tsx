@@ -4,39 +4,27 @@ import { FC, useEffect, useState } from 'react';
 import PeerCard from '@/components/PeerCard';
 
 import useWebSocketData from '@/app/hooks/use-websocket-data';
+import { apiHost } from '@/constant/config';
+
+import { PeersData } from '@/types/responses';
 
 interface Props {
   data: ReturnType<typeof useWebSocketData>;
 }
 
 const Peers: FC<Props> = ({ data }) => {
-  const [coins, setCoins] = useState<{ symbol: string; marketCap: number }[]>(
-    [],
-  );
+  const [coins, setCoins] = useState<PeersData>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/coins');
-        const data: { [key: string]: number } = await response.json();
-        // Sort lowest to highest market cap.
-        const formattedData = Object.entries(data)
-          .map(([symbol, marketCap]) => ({
-            symbol,
-            marketCap,
-          }))
-          .sort((a, b) => a.marketCap - b.marketCap);
-        setCoins(formattedData);
-      } catch (error) {
-        console.error('Failed to fetch coins', error);
-      }
-    };
-
-    fetchData();
+    fetch(`${apiHost}/peers`)
+      .then<PeersData>((resp) => resp.json())
+      .then((data) => {
+        setCoins(data);
+      })
+      .catch(() => console.error('Failed to fetch peer coins.'));
   }, []);
 
-  if (!data) return null;
-  if (!coins.length)
+  if (!data || !coins.length)
     return <p className='text-hlGray text-xl mt-10'>Loading...</p>;
 
   const markPrice = parseFloat(data.markPx);
@@ -63,8 +51,9 @@ const Peers: FC<Props> = ({ data }) => {
           <PeerCard
             key={coin.symbol}
             symbol={coin.symbol}
-            price={coin.marketCap / supply}
-            multiple={coin.marketCap / purrMarketCap}
+            price={coin.market_cap / supply}
+            multiple={coin.market_cap / purrMarketCap}
+            url={coin.url}
           />
         ))}
       </section>

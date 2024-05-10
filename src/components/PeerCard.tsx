@@ -6,11 +6,17 @@ interface Props {
   symbol: string;
   price: number;
   multiple: number;
+  url: string;
 }
 
-const PeerCard: FC<Props> = ({ symbol, price, multiple }) => {
+const PeerCard: FC<Props> = ({ symbol, price, multiple, url }) => {
   return (
-    <div className='flex items-center bg-hl-light py-1 px-2 rounded-2xl mb-2 mr-2'>
+    <a
+      href={url}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='flex items-center cursor-newtab bg-hl-light py-1 px-2 rounded-2xl mb-2 mr-2 hover:bg-primary-900 duration-200 transition-colors'
+    >
       <div className='w-6 inline-block mr-1'>
         <Image
           src={`/images/coins/${symbol}.png`}
@@ -39,7 +45,7 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple }) => {
       >
         {multiple >= 1 ? '\u25B2' : '\u25BC'} {multiple.toFixed(2)}x
       </p>
-    </div>
+    </a>
   );
 };
 

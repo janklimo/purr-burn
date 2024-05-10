@@ -27,3 +27,11 @@ export interface UserSnapshotData {
   tag: string | null;
   levels: Level[];
 }
+
+interface Coin {
+  symbol: string;
+  market_cap: number;
+  url: string;
+}
+
+export type PeersData = Coin[];
