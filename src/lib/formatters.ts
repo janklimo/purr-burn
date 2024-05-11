@@ -8,5 +8,10 @@ export const formatPurrBalance = (params: ValueFormatterParams): string => {
   }).format(params.value);
 };
 
-export const trimAddress = (address: string): string =>
-  address.substring(0, 6) + '...' + address.substring(address.length - 6);
+export const trimAddress = (address: string): string => {
+  if (address.endsWith('.eth')) return address;
+
+  return (
+    address.substring(0, 6) + '...' + address.substring(address.length - 4)
+  );
+};
