@@ -125,6 +125,10 @@ const Table = () => {
     {
       field: 'address',
       headerName: 'More',
+      valueGetter: (params) => ({
+        address: params.data?.address,
+        displayAddress: params.data?.display_address,
+      }),
       cellRenderer: Actions,
       minWidth: 200,
     },

@@ -8,14 +8,19 @@ import UnderlineLink from '@/components/links/UnderlineLink';
 import useAddressFromURL from '@/app/hooks/use-address-from-url';
 import { useAddressStore } from '@/state/stores';
 
-const Actions: FC<CustomCellRendererProps> = (params) => {
+interface Props {
+  address: string;
+  displayAddress: string;
+}
+
+const Actions: FC<CustomCellRendererProps<Props>> = (params) => {
   const setAddress = useAddressStore((state) => state.setAddress);
   const { setAddressParam } = useAddressFromURL();
 
   return (
     <div className='relative'>
       <UnderlineLink
-        href={`https://app.hyperliquid.xyz/explorer/address/${params.value}`}
+        href={`https://app.hyperliquid.xyz/explorer/address/${params.value.address}`}
         className='mr-2'
       >
         Explorer 🕵️
@@ -24,8 +29,11 @@ const Actions: FC<CustomCellRendererProps> = (params) => {
         href='#'
         onClick={(event) => {
           event.preventDefault();
-          setAddress(params.value);
-          setAddressParam(params.value);
+          const value = params.value.displayAddress.includes('...')
+            ? params.value.address // Full 0x form
+            : params.value.displayAddress; // ENS name
+          setAddress(value);
+          setAddressParam(value);
         }}
       >
         Zoom in 🔎
