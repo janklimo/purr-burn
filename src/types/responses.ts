@@ -1,6 +1,7 @@
 export interface LeaderboardRowData {
   rank: number;
   address: string;
+  display_address: string;
   purr_balance: number;
 }
 
