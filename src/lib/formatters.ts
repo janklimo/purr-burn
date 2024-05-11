@@ -9,7 +9,7 @@ export const formatPurrBalance = (params: ValueFormatterParams): string => {
 };
 
 export const trimAddress = (address: string): string => {
-  if (address.endsWith('.eth')) return address;
+  if (address.includes('.eth')) return address;
 
   return (
     address.substring(0, 6) + '...' + address.substring(address.length - 4)
