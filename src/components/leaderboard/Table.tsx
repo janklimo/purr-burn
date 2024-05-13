@@ -100,7 +100,7 @@ const Table = () => {
 
   const columnDefs: ColDef<LeaderboardRowData>[] = [
     { field: 'rank' },
-    { field: 'display_address' },
+    { field: 'display_address', headerName: 'Address' },
     {
       field: 'purr_balance',
       headerName: 'PURR Balance',
