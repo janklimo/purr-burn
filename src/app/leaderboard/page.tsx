@@ -28,8 +28,9 @@ export default function Leaderboard() {
           <span className='text-accent'>PURR</span> holders leaderboard
         </h2>
         <p className='text-center text-xs text-hlGray mb-8'>
-          Click on <span className='font-semibold text-white'>Zoom in 🔎 </span>{' '}
-          to see detailed stats
+          Listing Top 5,000 holders. Click on{' '}
+          <span className='font-semibold text-white'>Zoom in 🔎 </span> to see
+          detailed stats.
         </p>
         <div className='flex justify-center mb-8'>
           <div className='relative w-full md:w-3/4 max-w-5xl'>
