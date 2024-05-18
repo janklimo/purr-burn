@@ -38,6 +38,9 @@ export default {
           background: '#0E1A1E',
           border: '#3E3E3E',
         },
+        table: {
+          hover: '#163832',
+        },
       },
       keyframes: {
         flicker: {

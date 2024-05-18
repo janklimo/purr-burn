@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import Marquee from 'react-fast-marquee';
 
+import { downArrow, upArrow } from '@/lib/formatters';
+
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 
 const PriceChange: FC<{ change: number }> = ({ change }) => {
@@ -9,7 +11,7 @@ const PriceChange: FC<{ change: number }> = ({ change }) => {
 
     return (
       <span className='text-accent'>
-        &#x25B2;{' '}
+        {upArrow}{' '}
         {percent.toLocaleString(undefined, {
           style: 'percent',
           minimumFractionDigits: 2,
@@ -22,7 +24,7 @@ const PriceChange: FC<{ change: number }> = ({ change }) => {
 
     return (
       <span className='text-red'>
-        &#x25BC;{' '}
+        {downArrow}{' '}
         {percent.toLocaleString(undefined, {
           style: 'percent',
           minimumFractionDigits: 2,

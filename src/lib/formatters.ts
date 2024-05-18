@@ -15,3 +15,6 @@ export const trimAddress = (address: string): string => {
     address.substring(0, 6) + '...' + address.substring(address.length - 4)
   );
 };
+
+export const upArrow = '▲';
+export const downArrow = '▼';

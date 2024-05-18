@@ -36,3 +36,21 @@ interface Coin {
 }
 
 export type PeersData = Coin[];
+
+/**
+ * Changes
+ */
+
+export interface ChangesRowData {
+  rank: number;
+  address: string;
+  display_address: string;
+  balance_difference_absolute: number;
+  balance_difference_percent: number;
+  rank_difference: number;
+}
+
+export interface ChangesData {
+  created_at: string;
+  rows: ChangesRowData[];
+}

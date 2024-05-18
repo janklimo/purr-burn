@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { FC } from 'react';
 
+import { downArrow, upArrow } from '@/lib/formatters';
+
 interface Props {
   symbol: string;
   price: number;
@@ -43,7 +45,7 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url }) => {
           'font-bold',
         )}
       >
-        {multiple >= 1 ? '\u25B2' : '\u25BC'} {multiple.toFixed(2)}x
+        {multiple >= 1 ? upArrow : downArrow} {multiple.toFixed(2)}x
       </p>
     </a>
   );

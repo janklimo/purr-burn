@@ -1,7 +1,6 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
-  ColTypeDef,
   ModuleRegistry,
   ValueFormatterParams,
   ValueGetterParams,
@@ -11,30 +10,12 @@ import { useCallback, useState } from 'react';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-import Actions from '@/components/leaderboard/Actions';
+import { columnTypes, defaultColDef } from '@/components/tables/shared';
 
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 import { apiHost } from '@/constant/config';
 
-import { formatPurrBalance } from '../../lib/formatters';
-
 import { LeaderboardData, LeaderboardRowData } from '@/types/responses';
-
-const columnTypes: { [key: string]: ColTypeDef } = {
-  purrBalance: {
-    valueFormatter: formatPurrBalance,
-  },
-};
-
-const defaultColDef = {
-  editable: false,
-  enableRowGroup: false,
-  enablePivot: false,
-  enableValue: false,
-  filter: false,
-  flex: 1,
-  minWidth: 100,
-};
 
 /**
  * Table value getters and formatters.
@@ -84,7 +65,7 @@ const purrBalanceValueFormatter = (params: ValueFormatterParams): string => {
   });
 };
 
-const Table = () => {
+const HoldersTable = () => {
   const [rowData, setRowData] = useState<LeaderboardRowData[]>([]);
   const [snapshotDate, setSnapshotDate] = useState<string>();
   const data = useWebSocketData();
@@ -99,8 +80,8 @@ const Table = () => {
   }, []);
 
   const columnDefs: ColDef<LeaderboardRowData>[] = [
-    { field: 'rank' },
-    { field: 'display_address', headerName: 'Address' },
+    { field: 'rank', pinned: 'left', width: 80 },
+    { field: 'display_address', headerName: 'Address', pinned: 'left' },
     {
       field: 'purr_balance',
       headerName: 'PURR Balance',
@@ -124,13 +105,7 @@ const Table = () => {
     },
     {
       field: 'address',
-      headerName: 'More',
-      valueGetter: (params) => ({
-        address: params.data?.address,
-        displayAddress: params.data?.display_address,
-      }),
-      cellRenderer: Actions,
-      minWidth: 200,
+      type: ['moreActions'],
     },
   ];
 
@@ -161,4 +136,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default HoldersTable;

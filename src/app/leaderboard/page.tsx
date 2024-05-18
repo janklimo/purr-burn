@@ -5,10 +5,18 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 
 import Chart from '@/components/leaderboard/Chart';
-import Table from '@/components/leaderboard/Table';
+import PeriodSelector from '@/components/leaderboard/PeriodSelector';
+import HoldersTable from '@/components/leaderboard/Table';
+import TableSelector from '@/components/leaderboard/TableSelector';
+import TopDescription from '@/components/leaderboard/TopDescription';
+import ChangesTable from '@/components/tables/ChangesTable';
 import TradeCallout from '@/components/TradeCallout';
 
+import { useActiveTableStore } from '@/state/stores';
+
 export default function Leaderboard() {
+  const activeTable = useActiveTableStore((state) => state.activeTable);
+
   return (
     <main>
       <Head>
@@ -25,16 +33,14 @@ export default function Leaderboard() {
               alt='PURR'
             />
           </div>
-          <span className='text-accent'>PURR</span> holders leaderboard
+          <span className='text-accent'>PURR</span> leaderboard
         </h2>
-        <p className='text-center text-xs text-hlGray mb-8'>
-          Listing Top 5,000 holders. Click on{' '}
-          <span className='font-semibold text-white'>Zoom in 🔎 </span> to see
-          detailed stats.
-        </p>
+        <TableSelector />
+        <PeriodSelector />
+        <TopDescription />
         <div className='flex justify-center mb-8'>
           <div className='relative w-full md:w-3/4 max-w-5xl'>
-            <Table />
+            {activeTable === 'holders' ? <HoldersTable /> : <ChangesTable />}
           </div>
         </div>
         <div className='relative w-full md:w-3/4 max-w-5xl mx-auto mb-10'>
