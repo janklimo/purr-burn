@@ -34,13 +34,15 @@ const purrChangeFormatter = (
     maximumFractionDigits: 2,
   });
 
-  const percentValue = Math.abs(
+  let percentValue = Math.abs(
     params.data?.balance_difference_percent || 0,
   ).toLocaleString(undefined, {
     style: 'percent',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
+
+  if (percentValue === '0%') percentValue = '∞%';
 
   return withArrow(params.value, `${balanceValue} (${percentValue})`);
 };
