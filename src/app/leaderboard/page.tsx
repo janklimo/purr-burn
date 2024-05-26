@@ -39,7 +39,7 @@ export default function Leaderboard() {
         <PeriodSelector />
         <TopDescription />
         <div className='flex justify-center mb-8'>
-          <div className='relative w-full md:w-3/4 max-w-5xl'>
+          <div className='relative w-full md:w-3/4 max-w-7xl'>
             {activeTable === 'holders' ? <HoldersTable /> : <ChangesTable />}
           </div>
         </div>

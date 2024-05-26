@@ -16,7 +16,12 @@ import useWebSocketData from '@/app/hooks/use-websocket-data';
 import { apiHost } from '@/constant/config';
 import { useActiveTableStore } from '@/state/stores';
 
-import { downArrow, upArrow } from '../../lib/formatters';
+import {
+  downArrow,
+  formatInteger,
+  formatPurrBalance,
+  upArrow,
+} from '../../lib/formatters';
 
 import { ChangesData, ChangesRowData } from '@/types/responses';
 
@@ -113,6 +118,7 @@ const ChangesTable = () => {
 
   const columnDefs: ColDef<ChangesRowData>[] = [
     {
+      headerName: '',
       field: 'rank',
       width: 80,
       pinned: 'left',
@@ -122,6 +128,12 @@ const ChangesTable = () => {
       headerName: 'Address',
       pinned: 'left',
       width: 170,
+    },
+    {
+      field: 'balance',
+      headerName: 'Balance (PURR)',
+      valueFormatter: formatPurrBalance,
+      minWidth: 150,
     },
     {
       field: 'balance_difference_absolute',
@@ -138,6 +150,12 @@ const ChangesTable = () => {
       valueGetter: (params) => purrBalanceValueGetter(params, data?.markPx),
       valueFormatter: purrBalanceValueFormatter,
       minWidth: 150,
+    },
+    {
+      field: 'purr_rank',
+      headerName: 'Rank',
+      valueFormatter: formatInteger,
+      width: 80,
     },
     {
       field: 'rank_difference',

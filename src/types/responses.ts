@@ -45,6 +45,8 @@ export interface ChangesRowData {
   rank: number;
   address: string;
   display_address: string;
+  purr_rank: number;
+  balance: number;
   balance_difference_absolute: number;
   balance_difference_percent: number;
   rank_difference: number;
