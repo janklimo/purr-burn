@@ -39,15 +39,19 @@ const purrChangeFormatter = (
     maximumFractionDigits: 2,
   });
 
-  let percentValue = Math.abs(
-    params.data?.balance_difference_percent || 0,
-  ).toLocaleString(undefined, {
+  const change = params.data?.balance_difference_percent || 0;
+
+  let percentValue = Math.abs(change).toLocaleString(undefined, {
     style: 'percent',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
 
-  if (percentValue === '0%') percentValue = '∞%';
+  /**
+   * When an account goes from 0 to N balance, show infinity. Otherwise round to 0%
+   * for very tiny changes.
+   */
+  if (change === 0) percentValue = '∞%';
 
   return withArrow(params.value, `${balanceValue} (${percentValue})`);
 };
