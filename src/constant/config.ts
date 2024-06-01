@@ -4,4 +4,4 @@ export const siteConfig = {
   url: 'https://purrburn.fun',
 };
 
-export const apiHost = 'https://yprjg.hatchboxapp.com/api/v1';
+export const apiHost = process.env.NEXT_PUBLIC_API_HOST;

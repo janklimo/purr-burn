@@ -54,6 +54,7 @@ const Peers: FC<Props> = ({ data }) => {
             price={coin.market_cap / supply}
             multiple={coin.market_cap / purrMarketCap}
             url={coin.url}
+            image_url={coin.image_url}
           />
         ))}
       </section>

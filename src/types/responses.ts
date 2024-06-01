@@ -33,6 +33,7 @@ interface Coin {
   symbol: string;
   market_cap: number;
   url: string;
+  image_url: string;
 }
 
 export type PeersData = Coin[];

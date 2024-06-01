@@ -9,9 +9,10 @@ interface Props {
   price: number;
   multiple: number;
   url: string;
+  image_url: string;
 }
 
-const PeerCard: FC<Props> = ({ symbol, price, multiple, url }) => {
+const PeerCard: FC<Props> = ({ symbol, price, multiple, url, image_url }) => {
   return (
     <a
       href={url}
@@ -21,7 +22,7 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url }) => {
     >
       <div className='w-6 inline-block mr-1'>
         <Image
-          src={`/images/coins/${symbol}.png`}
+          src={image_url}
           width={64}
           height={64}
           priority
