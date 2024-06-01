@@ -20,7 +20,7 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url, image_url }) => {
       rel='noopener noreferrer'
       className='flex items-center cursor-newtab bg-hl-light py-1 px-2 rounded-2xl mb-2 mr-2 hover:bg-primary-900 duration-200 transition-colors'
     >
-      <div className='w-6 inline-block mr-1'>
+      <div className='relative w-6 inline-block mr-1'>
         <Image
           src={image_url}
           width={64}
@@ -29,6 +29,16 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url, image_url }) => {
           className='rounded-full'
           alt={symbol}
         />
+        {multiple < 1 && (
+          <div className='absolute top-0 left-0 w-full h-full opacity-80'>
+            <Image
+              src='/images/red-x.png'
+              width={474}
+              height={593}
+              alt='Check.'
+            />
+          </div>
+        )}
       </div>
       <p className='text-hlGray mr-2'>{symbol}:</p>
       <p className='text-accent font-bold'>
