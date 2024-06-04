@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { FC, useEffect, useState } from 'react';
 
 import PeerCard from '@/components/PeerCard';
+import PurrCard from '@/components/PurrCard';
 
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 import { apiHost } from '@/constant/config';
@@ -33,18 +33,10 @@ const Peers: FC<Props> = ({ data }) => {
 
   return (
     <div>
-      <h2 className='text-white text-base mb-4'>
+      <h2 className='flex items-center justify-center text-white text-base mb-4'>
         <span className='mr-2'>Price of</span>
-        <div className='w-5 inline-block mr-1'>
-          <Image
-            src='/images/purr.webp'
-            width={64}
-            height={64}
-            priority
-            alt='PURR'
-          />
-        </div>
-        <span className='text-accent'>PURR</span> with the market cap of ...
+        <PurrCard price={markPrice} />
+        with the market cap of ...
       </h2>
       <section className='flex justify-center items-center flex-wrap'>
         {coins.map((coin) => (
