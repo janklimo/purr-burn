@@ -33,10 +33,10 @@ const Peers: FC<Props> = ({ data }) => {
 
   return (
     <div>
-      <h2 className='flex items-center justify-center text-white text-base mb-4'>
-        <span className='mr-2'>Price of</span>
+      <h2 className='md:flex items-center justify-center text-white text-base mb-4'>
+        <span className='block md:inline mr-2'>Price of</span>
         <PurrCard price={markPrice} />
-        with the market cap of ...
+        <span className='block md:inline'>with the market cap of ...</span>
       </h2>
       <section className='flex justify-center items-center flex-wrap'>
         {coins.map((coin) => (
