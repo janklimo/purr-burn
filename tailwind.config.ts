@@ -41,6 +41,7 @@ export default {
         table: {
           hover: '#163832',
         },
+        loserRed: '#3c2d30',
       },
       keyframes: {
         flicker: {

@@ -18,7 +18,10 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url, image_url }) => {
       href={url}
       target='_blank'
       rel='noopener noreferrer'
-      className='flex items-center cursor-newtab bg-hl-light py-1 px-2 rounded-2xl mb-2 mr-2 hover:bg-primary-900 duration-200 transition-colors'
+      className={clsx(
+        'flex items-center cursor-newtab py-1 px-2 rounded-2xl mb-2 mr-2 hover:bg-primary-900 duration-200 transition-colors',
+        multiple < 1 ? 'bg-loserRed' : 'bg-hl-light',
+      )}
     >
       <div className='relative w-6 inline-block mr-1'>
         <Image
@@ -41,7 +44,12 @@ const PeerCard: FC<Props> = ({ symbol, price, multiple, url, image_url }) => {
         )}
       </div>
       <p className='text-hlGray mr-2'>{symbol}:</p>
-      <p className='text-accent font-bold'>
+      <p
+        className={clsx(
+          multiple >= 1 ? 'text-accent' : 'text-red',
+          'font-bold',
+        )}
+      >
         {price.toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD',
