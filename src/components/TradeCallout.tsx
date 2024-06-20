@@ -21,7 +21,7 @@ const TradeCallout: FC = () => (
         >
           4% discount
         </a>{' '}
-        on your taker fees.
+        on your trading fees.
       </p>
     </div>
     <div>

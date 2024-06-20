@@ -35,7 +35,7 @@ const MobileCallout: FC = () => {
         </div>
       </div>
       <div className='text-xs text-center text-gray-600'>
-        This referral link gives you 4% discount on your taker fees.
+        This referral link gives you 4% discount on your trading fees.
       </div>
     </div>
   );
