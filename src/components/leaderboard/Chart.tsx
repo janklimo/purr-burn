@@ -71,7 +71,7 @@ const axes: AgCartesianAxisOptions[] = [
     type: 'category',
     position: 'bottom',
   },
-  // Use left axis for 'iceCreamSales' series
+  // Use left axis for 'purr_balance' series
   {
     type: 'number',
     position: 'left',
@@ -83,7 +83,7 @@ const axes: AgCartesianAxisOptions[] = [
       },
     },
   },
-  // Use right axis for 'avgTemp' series
+  // Use right axis for 'rank' series
   {
     type: 'number',
     position: 'right',
@@ -102,11 +102,6 @@ const lineSeriesOptions: AgLineSeriesOptions = {
   xKey: 'date',
   yKey: 'rank',
   yName: 'Rank',
-  label: {
-    formatter: (params) => {
-      return '#' + params.value;
-    },
-  },
   tooltip: {
     renderer: (params) => ({
       content: '#' + params.datum.rank,
