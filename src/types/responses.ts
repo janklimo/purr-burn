@@ -57,3 +57,15 @@ export interface ChangesData {
   created_at: string;
   rows: ChangesRowData[];
 }
+
+/**
+ * Stats
+ */
+
+export type MarketStat = {
+  date: string;
+  usdc_supply: number;
+  market_cap_total: number;
+  volume_total: number;
+  sorted_token_names: string[];
+};
