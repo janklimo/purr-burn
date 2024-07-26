@@ -53,8 +53,6 @@ const tooltipContentVolume = (
 };
 
 const isSeriesVisible = (coin: string, selectedCoin: string): boolean => {
-  console.log(coin, selectedCoin);
-
   switch (selectedCoin) {
     case 'All':
       return true;
