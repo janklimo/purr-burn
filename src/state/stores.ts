@@ -29,3 +29,16 @@ export const useActiveTableStore = create<ActiveTableState>((set) => ({
   activePeriod: 'week',
   setActivePeriod: (activePeriod: ActivePeriod) => set({ activePeriod }),
 }));
+
+/**
+ * Selected coin in Stats
+ */
+interface CoinState {
+  selectedCoin: string;
+  setSelectedCoin: (coin: string) => void;
+}
+
+export const useCoinStore = create<CoinState>((set) => ({
+  selectedCoin: 'All',
+  setSelectedCoin: (selectedCoin: string) => set({ selectedCoin }),
+}));

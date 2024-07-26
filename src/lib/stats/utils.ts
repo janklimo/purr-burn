@@ -52,9 +52,23 @@ const tooltipContentVolume = (
           <div><b>Share</b>: ${volumeShare}</div>`;
 };
 
+const isSeriesVisible = (coin: string, selectedCoin: string): boolean => {
+  console.log(coin, selectedCoin);
+
+  switch (selectedCoin) {
+    case 'All':
+      return true;
+    case 'Strict':
+      return ['JEFF', 'PURR', 'POINTS', 'HFUN'].includes(coin.toUpperCase());
+    default:
+      return coin.toUpperCase() === selectedCoin.toUpperCase();
+  }
+};
+
 export const generateCoinSeries = (
   coins: string[],
   type: ChartType,
+  selectedCoin: string,
 ): AgAreaSeriesOptions[] => {
   return coins.map((coin) => ({
     type: 'area',
@@ -62,6 +76,7 @@ export const generateCoinSeries = (
     xKey: 'date',
     yKey: type === 'marketCap' ? `market_cap_${coin}` : `volume_${coin}`,
     yName: coin.toUpperCase(),
+    visible: isSeriesVisible(coin, selectedCoin),
     connectMissingData: true,
     tooltip: {
       renderer: (params) => ({

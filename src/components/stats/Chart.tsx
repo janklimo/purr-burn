@@ -9,6 +9,8 @@ import { axesConfig, ChartType, generateCoinSeries } from '@/lib/stats/utils';
 
 import Skeleton from '@/components/Skeleton';
 
+import { useCoinStore } from '@/state/stores';
+
 import { MarketStat } from '@/types/responses';
 
 const colors = [
@@ -63,6 +65,8 @@ interface Props {
 }
 
 const Chart: FC<Props> = ({ data, type }) => {
+  const selectedCoin = useCoinStore((state) => state.selectedCoin);
+
   if (!data)
     return <Skeleton className='h-96 w-80 md:h-[35rem] md:w-[70rem]' />;
 
@@ -101,8 +105,8 @@ const Chart: FC<Props> = ({ data, type }) => {
         },
         data,
         series: [
-          ...generateCoinSeries(current.sorted_token_names, type),
-          lineSeriesOptions,
+          ...generateCoinSeries(current.sorted_token_names, type, selectedCoin),
+          ...(type === 'marketCap' ? [lineSeriesOptions] : []),
         ],
         axes: axesConfig(current.sorted_token_names, type),
         legend: {
