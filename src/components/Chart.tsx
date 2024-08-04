@@ -4,7 +4,7 @@ import {
   AgChartTheme,
   AgDonutSeriesOptions,
 } from 'ag-charts-community';
-import { AgChartsReact } from 'ag-charts-react';
+import { AgCharts } from 'ag-charts-react';
 import { FC } from 'react';
 
 const theme: AgChartTheme = {
@@ -45,14 +45,14 @@ const Chart: FC<Props> = ({ supply }) => {
         text: 'Circulating Supply',
         fontWeight: 'bold',
         color: '#bcc4c2',
-        margin: 10,
+        spacing: 10,
       },
       {
         text: supply.toLocaleString('en-US', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         }),
-        margin: 4,
+        spacing: 4,
         fontSize: Number(width) > 768 ? 24 : 18,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
@@ -60,7 +60,7 @@ const Chart: FC<Props> = ({ supply }) => {
       },
       {
         text: 'PURR',
-        margin: 8,
+        spacing: 8,
         fontSize: Number(width) > 768 ? 22 : 16,
         fontFamily:
           'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
@@ -103,7 +103,7 @@ const Chart: FC<Props> = ({ supply }) => {
     },
   };
 
-  return <AgChartsReact options={chartOptions} />;
+  return <AgCharts options={chartOptions} />;
 };
 
 export default Chart;

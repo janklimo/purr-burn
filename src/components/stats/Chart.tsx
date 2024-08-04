@@ -2,7 +2,7 @@
 
 import { AgChartTheme } from '@ag-grid-community/core';
 import { AgLineSeriesOptions } from 'ag-charts-community';
-import { AgChartsReact } from 'ag-charts-react';
+import { AgCharts } from 'ag-charts-react';
 import { FC } from 'react';
 
 import { axesConfig, ChartType, generateCoinSeries } from '@/lib/stats/utils';
@@ -84,7 +84,7 @@ const Chart: FC<Props> = ({ data, type }) => {
   )}`;
 
   return (
-    <AgChartsReact
+    <AgCharts
       options={{
         theme,
         background: { fill: '#0f1a1f' },
@@ -92,6 +92,7 @@ const Chart: FC<Props> = ({ data, type }) => {
           text: type === 'marketCap' ? 'Spot market size' : 'Spot volume',
           color: 'white',
         },
+        height: 700,
         subtitle: {
           text: subtitle,
           color: '#9ca3af',

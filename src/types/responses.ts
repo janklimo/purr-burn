@@ -68,4 +68,6 @@ export type MarketStat = {
   market_cap_total: number;
   volume_total: number;
   sorted_token_names: string[];
+  [key: `market_cap_${string}`]: number;
+  [key: `volume_${string}`]: number;
 };

@@ -4,10 +4,12 @@ import {
   AgSeriesTooltipRendererParams,
 } from 'ag-charts-community';
 
+import { MarketStat } from '@/types/responses';
+
 export type ChartType = 'marketCap' | 'volume';
 
 const tooltipContentMarketCap = (
-  params: AgSeriesTooltipRendererParams,
+  params: AgSeriesTooltipRendererParams<MarketStat>,
   coin: string,
 ): string => {
   const mc = params.datum[`market_cap_${coin}`];
@@ -30,7 +32,7 @@ const tooltipContentMarketCap = (
 };
 
 const tooltipContentVolume = (
-  params: AgSeriesTooltipRendererParams,
+  params: AgSeriesTooltipRendererParams<MarketStat>,
   coin: string,
 ): string => {
   const vol = params.datum[`volume_${coin}`];

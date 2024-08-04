@@ -6,7 +6,7 @@ import {
   AgCartesianAxisOptions,
   AgLineSeriesOptions,
 } from 'ag-charts-community';
-import { AgChartsReact } from 'ag-charts-react';
+import { AgCharts } from 'ag-charts-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
@@ -260,7 +260,7 @@ const Chart = () => {
               />
             </div>
           </div>
-          <AgChartsReact
+          <AgCharts
             options={{
               theme,
               background: { fill: '#F5FEFD' },
