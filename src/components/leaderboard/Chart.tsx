@@ -263,6 +263,7 @@ const Chart = () => {
           <AgCharts
             options={{
               theme,
+              height: 700,
               background: { fill: '#F5FEFD' },
               title: { text: `Stats for ${trimAddress(targetAddress)}` },
               padding: {
