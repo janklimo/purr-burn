@@ -59,7 +59,9 @@ const isSeriesVisible = (coin: string, selectedCoin: string): boolean => {
     case 'All':
       return true;
     case 'Strict':
-      return ['JEFF', 'PURR', 'POINTS', 'HFUN'].includes(coin.toUpperCase());
+      return ['JEFF', 'PURR', 'POINTS', 'HFUN', 'RAGE'].includes(
+        coin.toUpperCase(),
+      );
     default:
       return coin.toUpperCase() === selectedCoin.toUpperCase();
   }
