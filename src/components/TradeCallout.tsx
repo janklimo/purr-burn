@@ -3,8 +3,7 @@
 import '@/lib/env';
 import { FC } from 'react';
 
-import 'react-circular-progressbar/dist/styles.css';
-
+import Friends from '@/components/Friends';
 import TradeButton from '@/components/TradeButton';
 
 const TradeCallout: FC = () => (
@@ -28,10 +27,11 @@ const TradeCallout: FC = () => (
       <p className='text-white text-sm font-semibold mb-1'>
         For tips on Hyperliquid L1
       </p>
-      <p className='text-hlGray font-mono text-xs'>
+      <p className='text-hlGray font-mono text-xs mb-8'>
         0xbf8802002D394F6f53d1c5a5Cc500Fd8DFa3B7C8
       </p>
     </div>
+    <Friends />
     <div className='text-white mt-5 text-center text-sm'>
       By{' '}
       <a
