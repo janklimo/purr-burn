@@ -7,7 +7,7 @@ import Friends from '@/components/Friends';
 import TradeButton from '@/components/TradeButton';
 
 const TradeCallout: FC = () => (
-  <div className='flex flex-col justify-center items-center text-center'>
+  <div className='flex flex-col justify-center items-center text-center px-2'>
     <div className='mt-6 mb-6'>
       <TradeButton />
       <p className='text-gray-400 text-sm mt-3'>
