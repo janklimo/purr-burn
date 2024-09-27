@@ -59,9 +59,14 @@ const barSeriesOptions: AgBarSeriesOptions = {
     },
   },
   tooltip: {
-    renderer: (params) => ({
-      content: `${params.datum.purr_balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`,
-    }),
+    renderer: ({ datum, yName }) => {
+      const value = `${datum.purr_balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`;
+
+      return {
+        title: `<b>${yName}</b> <small>(${datum.date})</small>`,
+        content: value,
+      };
+    },
   },
 };
 
@@ -103,9 +108,14 @@ const lineSeriesOptions: AgLineSeriesOptions = {
   yKey: 'rank',
   yName: 'Rank',
   tooltip: {
-    renderer: (params) => ({
-      content: '#' + params.datum.rank,
-    }),
+    renderer: ({ datum, yName }) => {
+      const value = datum.rank;
+
+      return {
+        title: `<b>${yName}</b> <small>(${datum.date})</small>`,
+        content: value,
+      };
+    },
   },
 };
 

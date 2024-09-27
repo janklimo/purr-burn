@@ -49,8 +49,9 @@ const lineSeriesOptions: AgLineSeriesOptions = {
   yKey: 'usdc_supply',
   yName: 'Bridged USDC',
   tooltip: {
-    renderer: (params) => ({
-      content: params.datum.usdc_supply.toLocaleString('en-US', {
+    renderer: ({ datum, yName }) => ({
+      title: `<b>${yName}</b> <small>(${datum.date})</small>`,
+      content: datum.usdc_supply.toLocaleString('en-US', {
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 0,

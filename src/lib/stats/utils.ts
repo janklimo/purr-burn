@@ -82,6 +82,7 @@ export const generateCoinSeries = (
     connectMissingData: true,
     tooltip: {
       renderer: (params) => ({
+        title: `<b>${params.yName}</b> <small>(${params.datum.date})</small>`,
         content:
           type === 'marketCap'
             ? tooltipContentMarketCap(params, coin)
