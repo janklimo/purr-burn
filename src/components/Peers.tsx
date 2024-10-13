@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 
 import PeerCard from '@/components/PeerCard';
 import PurrCard from '@/components/PurrCard';
+import Skeleton from '@/components/Skeleton';
 
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 import { apiHost } from '@/constant/config';
@@ -24,8 +25,7 @@ const Peers: FC<Props> = ({ data }) => {
       .catch(() => console.error('Failed to fetch peer coins.'));
   }, []);
 
-  if (!data || !coins.length)
-    return <p className='text-hlGray text-xl mt-10'>Loading...</p>;
+  if (!data || !coins.length) return <Skeleton className='flex w-full h-40' />;
 
   const markPrice = parseFloat(data.markPx);
   const supply = parseFloat(data.circulatingSupply);

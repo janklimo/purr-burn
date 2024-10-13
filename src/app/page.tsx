@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import 'react-circular-progressbar/dist/styles.css';
 
+import DidYouKnow from '@/components/DidYouKnow';
 import Peers from '@/components/Peers';
 import Progress from '@/components/Progress';
 import Stats from '@/components/Stats';
@@ -39,7 +40,10 @@ export default function HomePage() {
           <div className='mb-6 w-full sm:w-3/4'>
             <Stats data={data} />
           </div>
-          <div className='my-4'>
+          <div className='mt-4 mb-6 w-full'>
+            <DidYouKnow data={data} />
+          </div>
+          <div className='my-4 w-full'>
             <Peers data={data} />
           </div>
           <TradeCallout />
