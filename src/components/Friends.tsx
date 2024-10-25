@@ -27,7 +27,7 @@ const Friends: FC = () => (
     <h3 className='text-white text-lg mb-4 text-center'>
       Hyperliquid ecosystem friends 👫
     </h3>
-    <div className='flex justify-center gap-2 mb-4'>
+    <div className='flex flex-wrap justify-center gap-2 mb-4'>
       {friends.map((friend) => {
         return (
           <div
