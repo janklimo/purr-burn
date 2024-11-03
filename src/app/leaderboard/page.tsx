@@ -1,6 +1,5 @@
 'use client';
 
-import Head from 'next/head';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
@@ -19,9 +18,6 @@ export default function Leaderboard() {
 
   return (
     <main>
-      <Head>
-        <title>PURR Burn – Leaderboard</title>
-      </Head>
       <section className='bg-hl-dark p-3 md:p-4'>
         <h2 className='text-white text-lg mb-3 text-center'>
           <div className='w-5 inline-block mr-1'>
