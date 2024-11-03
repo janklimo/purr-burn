@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import * as React from 'react';
 
 export const metadata: Metadata = {
-  title: 'PURR Burn – Leaderboard',
+  title: 'Leaderboard',
 };
 
 export default function LeaderboardLayout({
