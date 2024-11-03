@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-display: swap;
+  font-family: Teodor;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('/fonts/Teodor-Light.woff') format('woff'),
+    url('/fonts/Teodor-Light.woff2') format('woff2');
+}
+
 :root {
   /* #region  /**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */

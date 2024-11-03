@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import * as React from 'react';
+import { Toaster } from 'sonner';
 
 import '@/styles/colors.css';
 import '@/styles/globals.css';
@@ -67,6 +68,17 @@ export default function RootLayout({
         <MobileCallout />
         <Navbar />
         {children}
+        <Toaster
+          toastOptions={{
+            unstyled: true,
+            classNames: {
+              toast:
+                'border border-hl-primary rounded-lg bg-toast-bg py-4 px-5 text-white text-sm shadow-md',
+              title: 'font-normal',
+              description: 'font-normal',
+            },
+          }}
+        />
       </body>
       <Analytics />
     </html>
