@@ -6,7 +6,8 @@ const Shelter: FC = () => {
       <h2 className='font-serif text-3xl text-center text-white mb-6'>
         Making a Difference For...
       </h2>
-      <div className='flex justify-center'>
+      <p className='text-hlGray text-sm text-center mb-8'>Background</p>
+      <div className='flex justify-center mb-6'>
         <iframe
           width='560'
           height='315'

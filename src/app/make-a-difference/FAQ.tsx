@@ -24,7 +24,7 @@ const faqs = [
 
 const FrequentlyAskedQuestions: FC = () => {
   return (
-    <div className='mx-auto max-w-7xl px-6 py-16 sm:py-32 lg:px-8'>
+    <div className='mx-auto max-w-7xl px-6 py-8 sm:py-12 lg:px-8'>
       <div className='mx-auto max-w-4xl divide-y divide-white/10'>
         <h2 className='font-serif text-3xl text-center text-white'>FAQ</h2>
         <dl className='mt-10 space-y-6 divide-y divide-white/10'>

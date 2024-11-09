@@ -3,11 +3,12 @@
 import { FC } from 'react';
 
 import CopyToClipboard from '@/components/CopyToClipboard';
-import Shelter from '@/components/Shelter';
 import TradeCallout from '@/components/TradeCallout';
 
 import FrequentlyAskedQuestions from '@/app/make-a-difference/FAQ';
+import Gallery from '@/app/make-a-difference/Gallery';
 import Progress from '@/app/make-a-difference/Progress';
+import Shelter from '@/app/make-a-difference/Shelter';
 
 const Campaign: FC = () => {
   return (
@@ -36,6 +37,7 @@ const Campaign: FC = () => {
         <p className='text-center text-yellow-200'>Updates</p>
         <div className='my-4'>
           <Shelter />
+          <Gallery />
         </div>
         <FrequentlyAskedQuestions />
         <TradeCallout />
