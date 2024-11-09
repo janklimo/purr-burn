@@ -31,7 +31,7 @@ export default function HomePage() {
               height={400}
               priority
               alt='The cat has a hoodie'
-              title='The cat has a hoodie'
+              title='Hoodie stays on'
             />
           </div>
           <div className='mb-4 h-96 w-80 md:h-[35rem] md:w-[70rem]'>

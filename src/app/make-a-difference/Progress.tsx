@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 const Progress: FC = () => {
@@ -10,11 +11,24 @@ const Progress: FC = () => {
       </p>
       <div className='flex justify-center'>
         <div className='mt-6 w-4/5 max-w-2xl'>
-          <div className='overflow-hidden rounded-full bg-hl-light'>
+          <div className='rounded-full bg-hl-light'>
             <div
-              style={{ width: '37.5%' }}
-              className='h-2 rounded-full bg-accent'
-            />
+              style={{ width: '33%' }}
+              className='relative h-5 rounded-full bg-accent'
+            >
+              <div className='absolute -top-3 -right-1 z-10'>
+                <div className='w-8'>
+                  <Image
+                    src='/images/purr.png'
+                    width={400}
+                    height={400}
+                    priority
+                    alt='The cat has a hoodie'
+                    title='Hoodie stays on'
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div className='mt-4 grid grid-cols-2 text-sm font-medium text-gray-300'>
             <div className='text-left'>0 PURR</div>
