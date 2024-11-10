@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { toast } from 'sonner';
 import { useCopyToClipboard } from 'usehooks-ts';
 
-const address = '0xD605C1fA4514Bf39Cf89F38eCD8cC2dE67C90872';
+const address = '0x16b9d3859E5A152b9Fca5A6f5b6527dA37618841';
 
 const CopyToClipboard: FC = () => {
   const [_, copy] = useCopyToClipboard();

@@ -1,19 +1,41 @@
+import { usePurrBalance } from '@/app/hooks/use-purr-balance';
+import Skeleton from '@/components/Skeleton';
 import Image from 'next/image';
 import { FC } from 'react';
 
 const Progress: FC = () => {
+  const { purrBalance, loading, error } = usePurrBalance();
+
+  if (loading) return <Skeleton className='flex max-w-2xl h-20 mx-auto' />;
+
+  const progressPercent = purrBalance / 42_000;
+
   return (
     <div>
       <p className='text-hlGray text-sm text-center'>
         We've collected{' '}
-        <span className='font-bold text-accent'>12,389.21 PURR</span> – we're{' '}
-        <span className='font-bold text-accent'>43%</span> of the way there!
+        <span className='font-bold text-accent'>
+          {purrBalance.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          PURR
+        </span>{' '}
+        – we're{' '}
+        <span className='font-bold text-accent'>
+          {progressPercent.toLocaleString(undefined, {
+            style: 'percent',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </span>{' '}
+        of the way there!
       </p>
       <div className='flex justify-center'>
         <div className='mt-6 w-4/5 max-w-2xl'>
           <div className='rounded-full bg-hl-light'>
             <div
-              style={{ width: '27.9%' }}
+              style={{ width: `${(progressPercent * 100).toFixed(1)}%` }}
               className='relative h-5 rounded-full bg-accent'
             >
               <div className='absolute -top-3 -right-1 z-10'>
