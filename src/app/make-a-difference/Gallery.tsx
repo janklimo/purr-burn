@@ -32,8 +32,7 @@ const Gallery = () => {
           return (
             <div
               key={item.image.src}
-              className='relative rounded-lg overflow-hidden group'
-              style={{ height: '350px' }}
+              className='relative rounded-lg overflow-hidden group h-40 md:h-60'
             >
               <Image
                 src={item.image}
