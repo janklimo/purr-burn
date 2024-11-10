@@ -18,8 +18,8 @@ const Campaign: FC = () => {
           Make a difference
         </h1>
         <p className='text-gray-300 text-center mb-12 px-5'>
-          Help a cat shelter in need by donating PURR. Any amount helps! Details
-          below.
+          Gmeow! Help a cat shelter in need by donating PURR. Win Hyperliquid
+          merch. Details below 👇
         </p>
         <div className='mb-6'>
           <Progress />

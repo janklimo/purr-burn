@@ -13,7 +13,7 @@ const Progress: FC = () => {
         <div className='mt-6 w-4/5 max-w-2xl'>
           <div className='rounded-full bg-hl-light'>
             <div
-              style={{ width: '33%' }}
+              style={{ width: '27.9%' }}
               className='relative h-5 rounded-full bg-accent'
             >
               <div className='absolute -top-3 -right-1 z-10'>
