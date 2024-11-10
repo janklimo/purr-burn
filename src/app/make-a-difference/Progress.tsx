@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 const Progress: FC = () => {
-  const { purrBalance, loading, error } = usePurrBalance();
+  const { purrBalance, loading } = usePurrBalance();
 
   if (loading) return <Skeleton className='flex max-w-2xl h-20 mx-auto' />;
 
@@ -35,7 +35,9 @@ const Progress: FC = () => {
         <div className='mt-6 w-4/5 max-w-2xl'>
           <div className='rounded-full bg-hl-light'>
             <div
-              style={{ width: `${(progressPercent * 100).toFixed(1)}%` }}
+              style={{
+                width: `${(Math.min(progressPercent, 1) * 100).toFixed(1)}%`,
+              }}
               className='relative h-5 rounded-full bg-accent'
             >
               <div className='absolute -top-3 -right-1 z-10'>

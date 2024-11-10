@@ -7,8 +7,10 @@ import TradeCallout from '@/components/TradeCallout';
 
 import FrequentlyAskedQuestions from '@/app/make-a-difference/FAQ';
 import Gallery from '@/app/make-a-difference/Gallery';
+import Leaderboard from '@/app/make-a-difference/Leaderboard';
 import Progress from '@/app/make-a-difference/Progress';
 import Shelter from '@/app/make-a-difference/Shelter';
+import Updates from '@/app/make-a-difference/Updates';
 
 const Campaign: FC = () => {
   return (
@@ -21,10 +23,16 @@ const Campaign: FC = () => {
           Gmeow! Help a cat shelter in need by donating PURR. Win Hyperliquid
           merch. Details below 👇
         </p>
-        <div className='mb-6'>
+
+        <div className='mb-8'>
           <Progress />
         </div>
-        <div className='mb-6'>
+
+        <div className='my-10 md:my-16'>
+          <Updates />
+        </div>
+
+        <div className='my-10 md:my-16'>
           <h2 className='font-serif text-white text-3xl mb-3 text-center'>
             How to donate?
           </h2>
@@ -33,9 +41,12 @@ const Campaign: FC = () => {
           </p>
           <CopyToClipboard />
         </div>
-        <p className='text-center text-yellow-200'>Leaderboard</p>
-        <p className='text-center text-yellow-200'>Updates</p>
-        <div className='my-4'>
+
+        <div className='my-10 md:my-16'>
+          <Leaderboard />
+        </div>
+
+        <div className='my-10 md:my-16'>
           <Shelter />
           <Gallery />
         </div>

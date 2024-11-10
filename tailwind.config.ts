@@ -41,7 +41,10 @@ export default {
           border: '#3E3E3E',
         },
         table: {
+          background: '#121212',
+          border: '#383838',
           hover: '#163832',
+          text: '#F5F5F5',
         },
         toast: {
           bg: '#205047',
