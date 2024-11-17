@@ -47,8 +47,14 @@ const Campaign: FC = () => {
         </div>
 
         <div className='my-10 md:my-16'>
-          <Shelter />
+          <h2 className='font-serif text-3xl text-center text-white mb-6'>
+            Making a Difference For...
+          </h2>
+          <p className='text-hlGray text-center text-sm mb-5 px-5'>
+            These 100+ beautiful shelter residents
+          </p>
           <Gallery />
+          <Shelter />
         </div>
         <FrequentlyAskedQuestions />
         <TradeCallout />
