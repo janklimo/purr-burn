@@ -4,9 +4,8 @@ import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
 
-import 'react-circular-progressbar/dist/styles.css';
-
 import DidYouKnow from '@/components/DidYouKnow';
+import Disclaimer from '@/components/Disclaimer';
 import Peers from '@/components/Peers';
 import Progress from '@/components/Progress';
 import Stats from '@/components/Stats';
@@ -47,6 +46,9 @@ export default function HomePage() {
             <Peers data={data} />
           </div>
           <TradeCallout />
+          <div className='mt-6'>
+            <Disclaimer />
+          </div>
         </div>
       </section>
     </main>
