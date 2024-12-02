@@ -24,7 +24,7 @@ const purrShareValueGetter = (
   params: ValueGetterParams<LeaderboardRowData>,
   supply: string | undefined,
 ) => {
-  const purrBalance = Number(params.data?.purr_balance);
+  const purrBalance = Number(params.data?.balance);
 
   if (!purrBalance || !supply) return null;
 
@@ -47,7 +47,7 @@ const purrBalanceValueGetter = (
   params: ValueGetterParams<LeaderboardRowData>,
   price: string | undefined,
 ) => {
-  const purrBalance = Number(params.data?.purr_balance);
+  const purrBalance = Number(params.data?.balance);
 
   if (!purrBalance || !price) return null;
 
@@ -83,13 +83,13 @@ const HoldersTable = () => {
     { field: 'rank', pinned: 'left', width: 80 },
     { field: 'display_address', headerName: 'Address', pinned: 'left' },
     {
-      field: 'purr_balance',
+      field: 'balance',
       headerName: 'PURR Balance',
       type: ['purrBalance'],
       minWidth: 150,
     },
     {
-      field: 'purr_balance',
+      field: 'balance',
       headerName: '% Total',
       valueGetter: (params) =>
         purrShareValueGetter(params, data?.circulatingSupply),
@@ -97,7 +97,7 @@ const HoldersTable = () => {
       minWidth: 150,
     },
     {
-      field: 'purr_balance',
+      field: 'balance',
       headerName: 'Value (USD)',
       valueGetter: (params) => purrBalanceValueGetter(params, data?.markPx),
       valueFormatter: purrBalanceValueFormatter,

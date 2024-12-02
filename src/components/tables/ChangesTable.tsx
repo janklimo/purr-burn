@@ -156,7 +156,7 @@ const ChangesTable = () => {
       minWidth: 150,
     },
     {
-      field: 'purr_rank',
+      field: 'balance_rank',
       headerName: 'Rank',
       valueFormatter: formatInteger,
       width: 80,
