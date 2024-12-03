@@ -7,6 +7,10 @@ import {
 import { AgCharts } from 'ag-charts-react';
 import { FC } from 'react';
 
+import Skeleton from '@/components/Skeleton';
+
+import useWebSocketData from '@/app/hooks/use-websocket-data';
+
 const theme: AgChartTheme = {
   palette: {
     fills: ['#98FCE4', '#f69318', '#163832'],
@@ -15,17 +19,22 @@ const theme: AgChartTheme = {
 };
 
 interface Props {
-  supply: number;
+  data: ReturnType<typeof useWebSocketData>;
 }
 
-const Chart: FC<Props> = ({ supply }) => {
+const Chart: FC<Props> = ({ data }) => {
   const { width } = useWindowSize();
 
-  const data = [
-    { asset: 'Circulating Supply', amount: supply, radius: 1 },
+  if (!data)
+    return <Skeleton className='h-96 w-80 md:h-[35rem] md:w-[70rem]' />;
+
+  const circulatingSupply = parseFloat(data.circulatingSupply);
+
+  const series = [
+    { asset: 'Circulating Supply', amount: circulatingSupply, radius: 1 },
     {
       asset: 'Burn From Trading Fees',
-      amount: 600_000_000 - supply,
+      amount: 600_000_000 - circulatingSupply,
       radius: 1.4,
     },
     { asset: 'Initial Burn', amount: 400_000_000, radius: 1 },
@@ -40,33 +49,6 @@ const Chart: FC<Props> = ({ supply }) => {
       enabled: false,
     },
     radiusKey: 'radius',
-    innerLabels: [
-      {
-        text: 'Circulating Supply',
-        fontWeight: 'bold',
-        color: '#bcc4c2',
-        spacing: 10,
-      },
-      {
-        text: supply.toLocaleString('en-US', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
-        spacing: 4,
-        fontSize: Number(width) > 768 ? 24 : 18,
-        fontFamily:
-          'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-        color: '#98FCE4',
-      },
-      {
-        text: 'PURR',
-        spacing: 8,
-        fontSize: Number(width) > 768 ? 22 : 16,
-        fontFamily:
-          'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-        color: '#98FCE4',
-      },
-    ],
     tooltip: {
       renderer: (params) => ({
         title: params.datum.asset,
@@ -76,7 +58,7 @@ const Chart: FC<Props> = ({ supply }) => {
   };
 
   const chartOptions: AgChartOptions = {
-    data,
+    data: series,
     width: Number(width) > 768 ? 1120 : 320,
     height: Number(width) > 768 ? 560 : 384,
     theme,

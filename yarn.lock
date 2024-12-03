@@ -1699,6 +1699,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@number-flow/react@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@number-flow/react/-/react-0.4.2.tgz#54033fa45b1523e41bf5324522f9b89a9e1b1928"
+  integrity sha512-lCAkLuK/3+Nlhb/oy1tpRnadp1vvfc/cWTtWUL9hMksHsJOGh+1T5Y/dyeQhyCD0heaWTjNYWX2ndBKLJwuC0A==
+  dependencies:
+    esm-env "^1.1.4"
+    number-flow "0.4.1"
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
@@ -3927,6 +3935,11 @@ eslint@^8.56.0:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
+esm-env@^1.1.4:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/esm-env/-/esm-env-1.2.1.tgz#34c2a0ba60582948afbe7bd779bc66f9d3aece7e"
+  integrity sha512-U9JedYYjCnadUlXk7e1Kr+aENQhtUaoaV9+gZm1T8LC/YBAPJx3NSPIAurFOC0U5vrdSevnUJS2/wUVxGwPhng==
+
 espree@^9.6.0, espree@^9.6.1:
   version "9.6.1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-9.6.1.tgz#a2a17b8e434690a5432f2f8018ce71d331a48c6f"
@@ -5777,6 +5790,13 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+number-flow@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/number-flow/-/number-flow-0.4.1.tgz#592b74100538dc38bf05b9ee7132c00a369e0003"
+  integrity sha512-d39o1tWL7mMMBLuOfHswtQ8r0fj9eUcatb4G1Spdv0ZO/I30kg9DBdSzSPjNG6hrj1slQ6KA3TQXk1RmOq4qOA==
+  dependencies:
+    esm-env "^1.1.4"
 
 nwsapi@^2.2.0:
   version "2.2.8"

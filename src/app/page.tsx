@@ -4,10 +4,11 @@ import '@/lib/env';
 import Head from 'next/head';
 import Image from 'next/image';
 
+import Chart from '@/components/Chart';
+import ChartInner from '@/components/ChartInner';
 import DidYouKnow from '@/components/DidYouKnow';
 import Disclaimer from '@/components/Disclaimer';
 import Peers from '@/components/Peers';
-import Progress from '@/components/Progress';
 import Stats from '@/components/Stats';
 import TradeCallout from '@/components/TradeCallout';
 
@@ -33,8 +34,9 @@ export default function HomePage() {
               title='Hoodie stays on'
             />
           </div>
-          <div className='mb-4 h-96 w-80 md:h-[35rem] md:w-[70rem]'>
-            <Progress data={data} />
+          <div className='mb-4 h-96 w-80 md:h-[35rem] md:w-[70rem] relative'>
+            <Chart data={data} />
+            <ChartInner data={data} />
           </div>
           <div className='mb-6 w-full sm:w-3/4'>
             <Stats data={data} />

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 const Disclaimer: FC = () => (
-  <p className='text-xs text-[#495856]'>
+  <p className='text-xs text-center text-[#495856]'>
     Disclaimer: PURRBurn.com is an independent website that aggregates
     information and resources about the PURR token. We are not affiliated with
     or endorsed by Hyperliquid Corp. All product names, logos, and brands are

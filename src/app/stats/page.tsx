@@ -2,6 +2,7 @@
 
 import { FC, useEffect, useState } from 'react';
 
+import Disclaimer from '@/components/Disclaimer';
 import Chart from '@/components/stats/Chart';
 import CoinSelect from '@/components/stats/Select';
 import TradeCallout from '@/components/TradeCallout';
@@ -36,6 +37,9 @@ const Stats: FC = () => {
           </div>
         </div>
         <TradeCallout />
+        <div className='layout mt-6'>
+          <Disclaimer />
+        </div>
       </section>
     </main>
   );
