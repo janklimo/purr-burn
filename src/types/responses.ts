@@ -12,7 +12,7 @@ export interface LeaderboardData {
 
 export interface Snapshot {
   rank: number;
-  purr_balance: number;
+  balance: number;
   date: string;
 }
 
@@ -24,7 +24,7 @@ export interface Level {
 export interface UserSnapshotData {
   snapshots: Snapshot[];
   rank: number;
-  purr_balance: number;
+  balance: number;
   tag: string | null;
   levels: Level[];
 }

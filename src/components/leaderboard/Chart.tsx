@@ -29,7 +29,7 @@ const purrValue = (
   if (!userData) return '...';
   if (!wsData) return '...';
 
-  const value = userData.purr_balance * parseFloat(wsData.markPx);
+  const value = userData.balance * parseFloat(wsData.markPx);
 
   return value.toLocaleString('en-US', {
     style: 'currency',
@@ -49,7 +49,7 @@ const theme: AgChartTheme = {
 const barSeriesOptions: AgBarSeriesOptions = {
   type: 'bar',
   xKey: 'date',
-  yKey: 'purr_balance',
+  yKey: 'balance',
   yName: 'PURR Balance',
   highlightStyle: {
     item: {
@@ -60,7 +60,7 @@ const barSeriesOptions: AgBarSeriesOptions = {
   },
   tooltip: {
     renderer: ({ datum, yName }) => {
-      const value = `${datum.purr_balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`;
+      const value = `${datum.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`;
 
       return {
         title: `<b>${yName}</b> <small>(${datum.date})</small>`,
@@ -76,11 +76,11 @@ const axes: AgCartesianAxisOptions[] = [
     type: 'category',
     position: 'bottom',
   },
-  // Use left axis for 'purr_balance' series
+  // Use left axis for `balance` series
   {
     type: 'number',
     position: 'left',
-    keys: ['purr_balance'],
+    keys: ['balance'],
     // Format the label applied to this axis
     label: {
       formatter: (params) => {
