@@ -43,8 +43,8 @@ const Peers: FC<Props> = ({ data }) => {
           <PeerCard
             key={coin.symbol}
             symbol={coin.symbol}
-            price={coin.market_cap / supply}
-            multiple={coin.market_cap / purrMarketCap}
+            price={coin.fdv / supply}
+            multiple={coin.fdv / purrMarketCap}
             url={coin.url}
             image_url={coin.image_url}
           />

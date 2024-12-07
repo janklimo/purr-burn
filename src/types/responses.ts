@@ -31,7 +31,7 @@ export interface UserSnapshotData {
 
 interface Coin {
   symbol: string;
-  market_cap: number;
+  fdv: number;
   url: string;
   image_url: string;
 }
