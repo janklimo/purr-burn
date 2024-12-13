@@ -12,10 +12,12 @@ import Peers from '@/components/Peers';
 import Stats from '@/components/Stats';
 import TradeCallout from '@/components/TradeCallout';
 
+import useTokenInfo from '@/app/hooks/use-token-info';
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 
 export default function HomePage() {
   const data = useWebSocketData();
+  const { tokenInfo } = useTokenInfo();
 
   return (
     <main>
@@ -45,7 +47,7 @@ export default function HomePage() {
             <DidYouKnow data={data} />
           </div>
           <div className='my-4 w-full'>
-            <Peers data={data} />
+            <Peers data={data} tokenInfo={tokenInfo} />
           </div>
           <TradeCallout />
           <div className='mt-6'>

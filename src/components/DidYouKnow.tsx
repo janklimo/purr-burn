@@ -56,8 +56,8 @@ const DidYouKnow: FC<Props> = ({ data }) => {
     );
 
   const { data: hypeData, error: hypeError } = useSWR<HypeData>(
-    'https://api.hyperliquid.xyz/info',
-    fetcher,
+    ['https://api.hyperliquid.xyz/info', 'fetchHypeTokenInfo'],
+    ([url]) => fetcher(url),
     { refreshInterval: 10_000 },
   );
 
