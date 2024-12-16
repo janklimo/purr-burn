@@ -10,6 +10,7 @@ import { LeaderboardData, LeaderboardRowData } from '@/types/responses';
 
 interface HypeData {
   totalSupply: string;
+  circulatingSupply: string;
   markPx: string;
 }
 
@@ -78,7 +79,15 @@ const DidYouKnow: FC<Props> = ({ data }) => {
             findFirstRankAboveBalance(leaderboardData.rows, burntAmount),
           )}
         </span>{' '}
-        largest holder worth{' '}
+        largest holder with{' '}
+        <span className='font-bold text-accent'>
+          {burntAmount.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          PURR
+        </span>{' '}
+        worth{' '}
         <span className='font-bold text-accent'>
           {(markPrice * burntAmount).toLocaleString('en-US', {
             style: 'currency',
@@ -99,13 +108,15 @@ const DidYouKnow: FC<Props> = ({ data }) => {
     const purrPrice = parseFloat(data.markPx);
     const purrMarketCap = purrSupply * purrPrice;
 
-    const hypeSupply = parseFloat(hypeData.totalSupply); // Using totalSupply instead of circulatingSupply
+    const hypeTotalSupply = parseFloat(hypeData.totalSupply);
+    const hypeCirculatingSupply = parseFloat(hypeData.circulatingSupply);
     const hypePrice = parseFloat(hypeData.markPx);
-    const hypeMarketCap = hypeSupply * hypePrice;
+    const hypeFdv = hypeTotalSupply * hypePrice;
+    const hypeMarketCap = hypeCirculatingSupply * hypePrice;
 
     return (
       <p className='text-hlGray text-sm mb-3'>
-        With a fully diluted valuation of{' '}
+        With a market cap of{' '}
         <span className='font-bold text-accent'>
           {(purrMarketCap / 1_000_000).toLocaleString('en-US', {
             style: 'currency',
@@ -131,7 +142,24 @@ const DidYouKnow: FC<Props> = ({ data }) => {
           })}
           B
         </span>{' '}
-        FDV
+        market cap (
+        <span className='font-bold text-accent'>
+          {(purrMarketCap / hypeFdv).toLocaleString('en-US', {
+            style: 'percent',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </span>{' '}
+        of HYPE's{' '}
+        <span className='font-bold text-accent'>
+          {(hypeFdv / 1_000_000_000).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 2,
+          })}
+          B
+        </span>{' '}
+        FDV)
       </p>
     );
   };

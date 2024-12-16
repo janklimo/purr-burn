@@ -30,14 +30,30 @@ const Chart: FC<Props> = ({ data }) => {
 
   const circulatingSupply = parseFloat(data.circulatingSupply);
 
+  // Calculate minimum segment size for better visibility
+  const minVisiblePercentage = 0.33;
+  const burntAmount = 600_000_000 - circulatingSupply;
+  const minSegmentSize = (1_000_000_000 * minVisiblePercentage) / 100;
+
   const series = [
-    { asset: 'Circulating Supply', amount: circulatingSupply, radius: 1 },
+    {
+      asset: 'Circulating Supply',
+      amount: circulatingSupply,
+      displayAmount: circulatingSupply,
+      radius: 1,
+    },
     {
       asset: 'Burn From Trading Fees',
-      amount: 600_000_000 - circulatingSupply,
-      radius: 1.4,
+      amount: Math.max(burntAmount, minSegmentSize),
+      displayAmount: burntAmount,
+      radius: 1,
     },
-    { asset: 'Initial Burn', amount: 400_000_000, radius: 1 },
+    {
+      asset: 'Initial Burn',
+      amount: 400_000_000,
+      displayAmount: 400_000_000,
+      radius: 1,
+    },
   ];
 
   const seriesOptions: AgDonutSeriesOptions = {
@@ -52,7 +68,10 @@ const Chart: FC<Props> = ({ data }) => {
     tooltip: {
       renderer: (params) => ({
         title: params.datum.asset,
-        content: `${params.datum.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PURR`,
+        content: `${params.datum.displayAmount.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })} PURR`,
       }),
     },
   };
