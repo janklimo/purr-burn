@@ -5,6 +5,7 @@ import { FC } from 'react';
 import CopyToClipboard from '@/components/CopyToClipboard';
 import TradeCallout from '@/components/TradeCallout';
 
+import Boxes from '@/app/make-a-difference/Boxes';
 import FrequentlyAskedQuestions from '@/app/make-a-difference/FAQ';
 import Gallery from '@/app/make-a-difference/Gallery';
 import Leaderboard from '@/app/make-a-difference/Leaderboard';
@@ -55,6 +56,7 @@ const Campaign: FC = () => {
           </p>
           <Gallery />
           <Shelter />
+          <Boxes />
         </div>
         <FrequentlyAskedQuestions />
         <TradeCallout />
