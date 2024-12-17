@@ -6,19 +6,48 @@ import {
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { FC } from 'react';
 
+import UnderlineLink from '@/components/links/UnderlineLink';
+
 const faqs = [
   {
-    question: 'How does it work?',
-    answer:
-      'Transfer your JEFF dust to the address above. The amount gets converted to USDC at the current highest Bid price and sent back to you.',
-  },
-  {
-    question: (
+    question: 'Why this shelter?',
+    answer: (
       <p>
-        Why don't you call it <i>Bye, JEFF</i>?
+        They face an urgent challenge: their facility needs critical repairs to
+        protect their animals from the upcoming winter. What sets them apart is
+        their commitment to complete financial transparency - as a registered
+        charity, they maintain a public account where you can track every
+        donation and see exactly how your money helps their animals. You can
+        review all of their transactions{' '}
+        <UnderlineLink href='https://ib.fio.sk/ib/transparent?a=2201410531'>
+          here
+        </UnderlineLink>
+        .
       </p>
     ),
-    answer: "That's disrespectful to the OG.",
+  },
+  {
+    question: 'Can you be trusted?',
+    answer:
+      "Many of you know me personally. I will provide proof of all token transfers, and you'll be able to verify the donations on the shelter's public account once the funds are received.",
+  },
+  {
+    question: 'Will you sell PURR once the target is reached?',
+    answer:
+      'Unfortunately, yes. Since the shelter can only accept traditional currency, I will need to convert the raised PURR tokens into fiat before transferring the funds. ',
+  },
+  {
+    question: 'Why was my PURR donation returned to me?',
+    answer:
+      "Thank you for trying to help! There is a hard limit on how much we're raising, so any extra donations get sent back automatically.",
+  },
+  {
+    question: "I'm a Top 3 donor. How do I claim my prize?",
+    answer: (
+      <p>
+        DM me on Discord: <span className='font-mono'>jan1667</span>
+      </p>
+    ),
   },
 ];
 
