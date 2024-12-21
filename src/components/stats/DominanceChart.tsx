@@ -129,7 +129,7 @@ const DominanceChart: FC<Props> = ({ data }) => {
         theme,
         background: { fill: '#0f1a1f' },
         title: {
-          text: 'HYPE Market Dominance',
+          text: 'HYPE Dominance',
           color: 'white',
         },
         height: 700,
@@ -159,7 +159,7 @@ const DominanceChart: FC<Props> = ({ data }) => {
               'market_cap_other',
             ],
             title: {
-              text: 'Market share',
+              text: 'Share',
               color: '#9ca3af',
             },
             gridLine: {
