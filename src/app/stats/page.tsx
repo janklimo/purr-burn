@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react';
 
 import Disclaimer from '@/components/Disclaimer';
 import Chart from '@/components/stats/Chart';
+import DominanceChart from '@/components/stats/DominanceChart';
 import CoinSelect from '@/components/stats/Select';
 import TradeCallout from '@/components/TradeCallout';
 
@@ -32,8 +33,11 @@ const Stats: FC = () => {
           <div className='relative w-full md:w-3/4 max-w-5xl mb-12'>
             <Chart type='marketCap' data={data} />
           </div>
-          <div className='relative w-full md:w-3/4 max-w-5xl'>
+          <div className='relative w-full md:w-3/4 max-w-5xl mb-12'>
             <Chart type='volume' data={data} />
+          </div>
+          <div className='relative w-full md:w-3/4 max-w-5xl'>
+            <DominanceChart data={data} />
           </div>
         </div>
         <TradeCallout />

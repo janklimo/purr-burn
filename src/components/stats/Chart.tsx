@@ -13,7 +13,7 @@ import { useCoinStore } from '@/state/stores';
 
 import { MarketStat } from '@/types/responses';
 
-const colors = [
+export const colors = [
   '#51D2C1', // Hyperliquid green
   '#FF6B6B', // Coral red
   '#FFD93D', // Bright yellow
