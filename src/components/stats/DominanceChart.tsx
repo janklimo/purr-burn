@@ -70,6 +70,7 @@ const tooltipRenderer = (params: AgCartesianSeriesTooltipRendererParams) => {
     .reduce((sum, key) => sum + (params.datum[key] as number), 0);
   const percentage = (value / total) * 100;
   return {
+    title: `<b>${params.yName}</b> <small>(${params.datum.date})</small>`,
     content: `${percentage.toFixed(2)}%`,
   };
 };
