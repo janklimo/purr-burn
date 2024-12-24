@@ -5,12 +5,14 @@ import Skeleton from '@/components/Skeleton';
 
 import { usePurrBalance } from '@/app/hooks/use-purr-balance';
 
+const target = 30_000;
+
 const Progress: FC = () => {
   const { purrBalance, loading } = usePurrBalance();
 
   if (loading) return <Skeleton className='flex max-w-2xl h-20 mx-auto' />;
 
-  const progressPercent = purrBalance / 30_000;
+  const progressPercent = purrBalance / target;
 
   return (
     <div>
@@ -58,7 +60,7 @@ const Progress: FC = () => {
           </div>
           <div className='mt-4 grid grid-cols-2 text-sm font-medium text-gray-300'>
             <div className='text-left'>0 PURR</div>
-            <div className='text-right'>42,000 PURR</div>
+            <div className='text-right'>{target.toLocaleString()} PURR</div>
           </div>
         </div>
       </div>
