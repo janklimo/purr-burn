@@ -6,7 +6,13 @@ import { classNames } from '@/lib/utils';
 const updates = [
   {
     title: 'Campaign started 🚀',
-    date: 'Dec 23, 2024',
+    date: new Date('2024-12-25T07:00:00Z').toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }),
   },
 ];
 
