@@ -2,7 +2,6 @@
 
 import { FC, useEffect, useState } from 'react';
 
-import Disclaimer from '@/components/Disclaimer';
 import Chart from '@/components/stats/Chart';
 import DominanceChart from '@/components/stats/DominanceChart';
 import CoinSelect from '@/components/stats/Select';
@@ -41,9 +40,6 @@ const Stats: FC = () => {
           </div>
         </div>
         <TradeCallout />
-        <div className='layout mt-6'>
-          <Disclaimer />
-        </div>
       </section>
     </main>
   );

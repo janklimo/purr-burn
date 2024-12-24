@@ -10,6 +10,7 @@ import '@ag-grid-community/styles/ag-theme-material.css';
 // Must come after other ag-grid CSS imports
 import '@/styles/ag-grid.css';
 
+import Disclaimer from '@/components/Disclaimer';
 import MobileCallout from '@/components/MobileCallout';
 import Navbar from '@/components/Navbar';
 
@@ -79,6 +80,9 @@ export default function RootLayout({
             },
           }}
         />
+        <div className='layout mt-3 mb-6'>
+          <Disclaimer />
+        </div>
       </body>
       <Analytics />
     </html>

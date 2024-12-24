@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Chart from '@/components/Chart';
 import ChartInner from '@/components/ChartInner';
 import DidYouKnow from '@/components/DidYouKnow';
-import Disclaimer from '@/components/Disclaimer';
 import Peers from '@/components/Peers';
 import Stats from '@/components/Stats';
 import TradeCallout from '@/components/TradeCallout';
@@ -50,9 +49,6 @@ export default function HomePage() {
             <Peers data={data} tokenInfo={tokenInfo} />
           </div>
           <TradeCallout />
-          <div className='mt-6'>
-            <Disclaimer />
-          </div>
         </div>
       </section>
     </main>

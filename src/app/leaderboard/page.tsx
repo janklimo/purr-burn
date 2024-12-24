@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { Suspense } from 'react';
 
-import Disclaimer from '@/components/Disclaimer';
 import Chart from '@/components/leaderboard/Chart';
 import PeriodSelector from '@/components/leaderboard/PeriodSelector';
 import HoldersTable from '@/components/leaderboard/Table';
@@ -46,9 +45,6 @@ export default function Leaderboard() {
           </Suspense>
         </div>
         <TradeCallout />
-        <div className='layout mt-6'>
-          <Disclaimer />
-        </div>
       </section>
     </main>
   );
