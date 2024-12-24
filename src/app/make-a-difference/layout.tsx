@@ -11,7 +11,7 @@ export const metadata: Metadata = {
       'Help a cat shelter in need by donating PURR. Win a Hyperliquid plushie.',
     images: [
       {
-        url: `${siteConfig.url}/images/og/make-a-difference-og.png`,
+        url: `${siteConfig.url}/images/og/make-a-difference.png`,
         width: 1200,
         height: 630,
         alt: 'Make a difference - Help a cat shelter in need',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Make a difference',
     description:
       'Help a cat shelter in need by donating PURR. Win a Hyperliquid plushie.',
-    images: [`${siteConfig.url}/images/og/make-a-difference-og.png`],
+    images: [`${siteConfig.url}/images/og/make-a-difference.png`],
   },
 };
 

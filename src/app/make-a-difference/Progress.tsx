@@ -1,14 +1,16 @@
-import { usePurrBalance } from '@/app/hooks/use-purr-balance';
-import Skeleton from '@/components/Skeleton';
 import Image from 'next/image';
 import { FC } from 'react';
+
+import Skeleton from '@/components/Skeleton';
+
+import { usePurrBalance } from '@/app/hooks/use-purr-balance';
 
 const Progress: FC = () => {
   const { purrBalance, loading } = usePurrBalance();
 
   if (loading) return <Skeleton className='flex max-w-2xl h-20 mx-auto' />;
 
-  const progressPercent = purrBalance / 42_000;
+  const progressPercent = purrBalance / 30_000;
 
   return (
     <div>
