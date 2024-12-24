@@ -134,3 +134,37 @@
       100% 2px;
   }
 }
+
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose h1 {
+    @apply text-4xl font-bold mb-8 text-white;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-semibold mt-8 mb-4 text-white;
+  }
+
+  .prose p {
+    @apply mb-4 text-gray-300;
+  }
+
+  .prose ul {
+    @apply list-disc pl-6 mb-4 text-gray-300;
+  }
+
+  .prose ul ul {
+    @apply mt-2;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose a {
+    @apply text-blue-400 hover:text-blue-300 underline;
+  }
+}

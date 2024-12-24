@@ -45,7 +45,11 @@ const faqs = [
     question: "I'm a Top 3 donor. How do I claim my prize?",
     answer: (
       <p>
-        DM me on Discord: <span className='font-mono'>jan1667</span>
+        <UnderlineLink href='https://etherscan.io/verifiedsignatures'>
+          Sign
+        </UnderlineLink>{' '}
+        a message containing your Discord name with your wallet and DM me on
+        Discord: <span className='font-mono'>jan1667</span>
       </p>
     ),
   },
