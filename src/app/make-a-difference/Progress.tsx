@@ -27,7 +27,7 @@ const Progress: FC = () => {
         </span>
         {' – '}
         {progressPercent >= 1 ? (
-          'mission complete 🎉'
+          'mission accomplished 🎉'
         ) : (
           <>
             we're{' '}
