@@ -39,7 +39,7 @@ const Campaign: FC = () => {
       <main>
         <section className='bg-hl-dark p-3 md:p-4'>
           <h1 className='font-serif text-white text-4xl md:text-5xl mb-5 text-center'>
-            Make a difference
+            Make a Difference
           </h1>
           <p className='text-gray-300 text-center mb-12 px-5'>
             Gmeow! Help a cat shelter in need by donating PURR. Win a
