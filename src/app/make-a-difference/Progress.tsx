@@ -24,16 +24,23 @@ const Progress: FC = () => {
             maximumFractionDigits: 2,
           })}{' '}
           PURR
-        </span>{' '}
-        – we're{' '}
-        <span className='font-bold text-accent'>
-          {progressPercent.toLocaleString(undefined, {
-            style: 'percent',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })}
-        </span>{' '}
-        of the way there!
+        </span>
+        {' – '}
+        {progressPercent >= 1 ? (
+          'mission complete 🎉'
+        ) : (
+          <>
+            we're{' '}
+            <span className='font-bold text-accent'>
+              {progressPercent.toLocaleString(undefined, {
+                style: 'percent',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </span>{' '}
+            of the way there!
+          </>
+        )}
       </p>
       <div className='flex justify-center'>
         <div className='mt-6 w-4/5 max-w-2xl'>
