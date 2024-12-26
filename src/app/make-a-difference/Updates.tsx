@@ -37,7 +37,7 @@ const updates = [
         </p>
       </div>
     ),
-    date: new Date('2024-12-26T16:56:37Z').toLocaleString(undefined, {
+    date: new Date('2024-12-25T16:56:37Z').toLocaleString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
