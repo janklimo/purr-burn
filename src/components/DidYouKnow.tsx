@@ -34,6 +34,13 @@ const toOrdinal = (n: number): string => {
   return `${n}${suffixes[n % 10] || 'th'}`;
 };
 
+const adjustCirculatingSupply = (supply: number) => {
+  if (supply > 900_000_000) {
+    return supply - 428_060_000 - 238_000_000;
+  }
+  return supply;
+};
+
 const fetcher = (url: string) =>
   fetch(url, {
     method: 'POST',
@@ -109,7 +116,9 @@ const DidYouKnow: FC<Props> = ({ data }) => {
     const purrMarketCap = purrSupply * purrPrice;
 
     const hypeTotalSupply = parseFloat(hypeData.totalSupply);
-    const hypeCirculatingSupply = parseFloat(hypeData.circulatingSupply);
+    const hypeCirculatingSupply = adjustCirculatingSupply(
+      parseFloat(hypeData.circulatingSupply),
+    );
     const hypePrice = parseFloat(hypeData.markPx);
     const hypeFdv = hypeTotalSupply * hypePrice;
     const hypeMarketCap = hypeCirculatingSupply * hypePrice;
