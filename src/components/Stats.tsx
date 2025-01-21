@@ -37,9 +37,10 @@ const PriceChange: FC<{ change: number }> = ({ change }) => {
 
 interface Props {
   data: ReturnType<typeof useWebSocketData>;
+  assistanceFundBalance: number;
 }
 
-const Stats: FC<Props> = ({ data }) => {
+const Stats: FC<Props> = ({ data, assistanceFundBalance }) => {
   if (!data) return null;
 
   const supply = parseFloat(data.circulatingSupply);
@@ -87,6 +88,16 @@ const Stats: FC<Props> = ({ data }) => {
             currency: 'USD',
             maximumFractionDigits: 0,
           })}
+        </p>
+        <p className='text-gray-500 mx-3'>/</p>
+        {/* Assistance Fund */}
+        <p className='text-hlGray text-sm mr-3'>Assistance Fund:</p>
+        <p className='text-accent text-sm font-mono'>
+          {assistanceFundBalance.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          PURR
         </p>
         <p className='text-gray-500 mx-3'>/</p>
       </Marquee>
