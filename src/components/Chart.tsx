@@ -13,8 +13,8 @@ import Skeleton from '@/components/Skeleton';
 import useWebSocketData from '@/app/hooks/use-websocket-data';
 
 const SERIES_NAMES = {
-  CIRCULATING: 'Circulating Supply',
-  ASSISTANCE_FUND: 'Assistance Fund',
+  CIRCULATING_OTHER: 'Circulating Supply: Other',
+  CIRCULATING_ASSISTANCE_FUND: 'Circulating Supply: Assistance Fund',
   BURN_TRADING_FEES: 'Burn From Trading Fees',
   INITIAL_BURN: 'Initial Burn',
 } as const;
@@ -54,23 +54,22 @@ const tooltipContent = (
 
   // Determine title color based on segment
   const isDarkTitle = (asset: SeriesName): boolean =>
-    asset === SERIES_NAMES.CIRCULATING ||
-    asset === SERIES_NAMES.ASSISTANCE_FUND;
+    asset === SERIES_NAMES.CIRCULATING_OTHER ||
+    asset === SERIES_NAMES.CIRCULATING_ASSISTANCE_FUND;
 
   const titleStyle = isDarkTitle(params.datum.asset) ? 'color: #03251F;' : '';
 
-  const share = `${(value / 1_000_000_000).toLocaleString('en-US', {
+  const shareOfTotal = `${(value / 1_000_000_000).toLocaleString('en-US', {
     style: 'percent',
     minimumFractionDigits: 3,
     maximumFractionDigits: 3,
   })}`;
 
-  let content = `<div><b>Amount</b>: ${amount}</div>
-                 <div><b>Share of Total</b>: ${share}</div>`;
+  let content = `<div><b>Amount</b>: ${amount}</div>`;
 
   // Add Share of Circulating for Assistance Fund
   if (
-    params.datum.asset === SERIES_NAMES.ASSISTANCE_FUND &&
+    params.datum.asset === SERIES_NAMES.CIRCULATING_ASSISTANCE_FUND &&
     params.datum.circulatingSupply
   ) {
     const shareOfCirculating = `${(
@@ -82,6 +81,8 @@ const tooltipContent = (
     })}`;
     content += `<div><b>Share of Circulating</b>: ${shareOfCirculating}</div>`;
   }
+
+  content += `<div><b>Share of Total</b>: ${shareOfTotal}</div>`;
 
   return {
     title: `<b style="${titleStyle}">${params.datum.asset}</b>`,
@@ -106,13 +107,13 @@ const Chart: FC<Props> = ({ data, assistanceFundBalance }) => {
 
   const series = [
     {
-      asset: SERIES_NAMES.CIRCULATING,
+      asset: SERIES_NAMES.CIRCULATING_OTHER,
       amount: otherCirculatingSupply,
       displayAmount: otherCirculatingSupply,
       radius: 1,
     },
     {
-      asset: SERIES_NAMES.ASSISTANCE_FUND,
+      asset: SERIES_NAMES.CIRCULATING_ASSISTANCE_FUND,
       amount: assistanceFundBalance,
       displayAmount: assistanceFundBalance,
       radius: 1,
@@ -146,7 +147,7 @@ const Chart: FC<Props> = ({ data, assistanceFundBalance }) => {
     },
     listeners: {
       nodeClick: (event) => {
-        if (event.datum.asset === SERIES_NAMES.ASSISTANCE_FUND) {
+        if (event.datum.asset === SERIES_NAMES.CIRCULATING_ASSISTANCE_FUND) {
           window.open(
             'https://hypurrscan.io/address/0xccd69f432ce1d8c9cdc31bd535dd11b37cbea4ea',
             '_blank',
