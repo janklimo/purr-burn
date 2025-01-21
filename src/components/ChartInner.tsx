@@ -13,7 +13,7 @@ const ChartInner: FC<Props> = ({ data }) => {
   const circulatingSupply = parseFloat(data.circulatingSupply);
 
   return (
-    <div className='absolute top-1/2 left-1/2 text-white text-center -translate-x-1/2 -translate-y-1/2 -mt-9 md:-mt-10'>
+    <div className='absolute text-center top-1/2 left-1/2 text-white -translate-x-1/2 -translate-y-1/2 -mt-16 md:-mt-4'>
       <span className='font-bold text-sm text-hlGray'>Circulating Supply</span>
       <div className='text-accent font-mono font-semibold text-lg md:text-2xl mt-1'>
         <NumberFlow

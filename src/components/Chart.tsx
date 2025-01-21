@@ -92,6 +92,7 @@ const tooltipContent = (
 
 const Chart: FC<Props> = ({ data, assistanceFundBalance }) => {
   const { width } = useWindowSize();
+  const isMobile = Number(width) <= 768;
 
   if (!data)
     return <Skeleton className='h-96 w-80 md:h-[35rem] md:w-[70rem]' />;
@@ -159,8 +160,8 @@ const Chart: FC<Props> = ({ data, assistanceFundBalance }) => {
 
   const chartOptions: AgChartOptions = {
     data: series,
-    width: Number(width) > 768 ? 1120 : 320,
-    height: Number(width) > 768 ? 560 : 384,
+    width: isMobile ? 320 : 1120,
+    height: isMobile ? 500 : 560,
     theme,
     background: {
       fill: '#03251F',
@@ -173,14 +174,13 @@ const Chart: FC<Props> = ({ data, assistanceFundBalance }) => {
     },
     series: [seriesOptions],
     legend: {
-      spacing: 10,
-      maxWidth: 350,
+      spacing: 25,
+      maxWidth: isMobile ? 350 : 1000,
+      position: 'bottom',
       item: {
-        paddingX: 32,
+        paddingX: 24,
         paddingY: 8,
-        label: {
-          color: '#bcc4c2',
-        },
+        label: { color: '#bcc4c2' },
       },
     },
   };
