@@ -1,9 +1,13 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import shipping_1 from 'public/images/updates/shipping_1.png';
+import shipping_2 from 'public/images/updates/shipping_2.png';
+import shipping_3 from 'public/images/updates/shipping_3.png';
 import { FC } from 'react';
 
 import { classNames } from '@/lib/utils';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
+import PhotoAlbum from '@/components/PhotoAlbum';
 
 const updates = [
   {
@@ -38,6 +42,25 @@ const updates = [
       </div>
     ),
     date: new Date('2024-12-25T16:56:37Z').toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }),
+  },
+  {
+    title: 'Plushies shipped',
+    description: (
+      <div className='text-gray-400'>
+        <p className='my-2'>
+          Shipped all 3 plushies. The total shipping cost is 6,276.5 THB
+          (approx. $186.91).
+        </p>
+        <PhotoAlbum images={[shipping_1, shipping_2, shipping_3]} />
+      </div>
+    ),
+    date: new Date('2024-01-24T05:20:00Z').toLocaleString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

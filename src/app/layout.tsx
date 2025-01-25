@@ -9,6 +9,7 @@ import '@ag-grid-community/styles/ag-grid.css';
 import '@ag-grid-community/styles/ag-theme-material.css';
 // Must come after other ag-grid CSS imports
 import '@/styles/ag-grid.css';
+import 'yet-another-react-lightbox/styles.css';
 
 import Disclaimer from '@/components/Disclaimer';
 import MobileCallout from '@/components/MobileCallout';
