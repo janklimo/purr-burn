@@ -68,6 +68,29 @@ const updates = [
       minute: '2-digit',
     }),
   },
+  {
+    title: 'Tokens sold',
+    description: (
+      <div className='text-gray-400'>
+        <p className='my-2'>
+          Successfully converted all remaining PURR tokens to USDC, bringing our
+          total fundraising amount to 8,167.15821500 USDC. You can verify all
+          transactions on{' '}
+          <UnderlineLink href='https://hypurrscan.io/address/0x16b9d3859E5A152b9Fca5A6f5b6527dA37618841'>
+            HypurrScan
+          </UnderlineLink>
+          .
+        </p>
+      </div>
+    ),
+    date: new Date('2025-01-30T03:29:14Z').toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }),
+  },
 ];
 
 const Updates: FC = () => {
