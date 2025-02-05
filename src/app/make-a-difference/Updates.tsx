@@ -2,6 +2,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import shipping_1 from 'public/images/updates/shipping_1.png';
 import shipping_2 from 'public/images/updates/shipping_2.png';
 import shipping_3 from 'public/images/updates/shipping_3.png';
+import transferToCex from 'public/images/updates/transfer-to-cex.png';
 import { FC } from 'react';
 
 import { classNames } from '@/lib/utils';
@@ -84,6 +85,22 @@ const updates = [
       </div>
     ),
     date: new Date('2025-01-30T03:29:14Z').toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }),
+  },
+  {
+    title: 'USDC transferred to CEX',
+    description: (
+      <div className='text-gray-400'>
+        <p className='my-2'>Received 8,166.15 USDC in total.</p>
+        <PhotoAlbum images={[transferToCex]} />
+      </div>
+    ),
+    date: new Date('2024-02-05T11:59:00Z').toLocaleString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
