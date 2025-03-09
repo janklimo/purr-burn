@@ -2,7 +2,10 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import shipping_1 from 'public/images/updates/shipping_1.png';
 import shipping_2 from 'public/images/updates/shipping_2.png';
 import shipping_3 from 'public/images/updates/shipping_3.png';
+import totals from 'public/images/updates/totals.png';
 import transferToCex from 'public/images/updates/transfer-to-cex.png';
+import transfer_1 from 'public/images/updates/transfer_1.png';
+import transfer_2 from 'public/images/updates/transfer_2.png';
 import { FC } from 'react';
 
 import { classNames } from '@/lib/utils';
@@ -61,7 +64,7 @@ const updates = [
         <PhotoAlbum images={[shipping_1, shipping_2, shipping_3]} />
       </div>
     ),
-    date: new Date('2024-01-24T05:20:00Z').toLocaleString(undefined, {
+    date: new Date('2025-01-24T05:20:00Z').toLocaleString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -100,7 +103,36 @@ const updates = [
         <PhotoAlbum images={[transferToCex]} />
       </div>
     ),
-    date: new Date('2024-02-05T11:59:00Z').toLocaleString(undefined, {
+    date: new Date('2025-02-05T11:59:00Z').toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }),
+  },
+  {
+    title: 'Funds transferred to cat shelter',
+    description: (
+      <div className='text-gray-400'>
+        <p className='my-2'>
+          A total of €7,380.16 was delivered to the cat shelter in two
+          transfers. You can verify all transactions{' '}
+          <UnderlineLink href='https://ib.fio.sk/ib/transparent?a=2201410531&f=01.01.2025&t=09.03.2025'>
+            here
+          </UnderlineLink>
+          .
+        </p>
+        <PhotoAlbum images={[transfer_1, transfer_2]} />
+        <p className='my-2'>
+          Finally, a huge thanks to everyone who donated! Here's a breakdown of
+          all the money we received and sent out:
+        </p>
+        <PhotoAlbum images={[totals]} />
+        <p className='my-2'>Until next time, gmeow! 😻</p>
+      </div>
+    ),
+    date: new Date('2025-03-09T08:39:00Z').toLocaleString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
