@@ -36,6 +36,10 @@ export default {
         black: '#02231e',
         inputBlack: '#0f1a1f',
         red: '#ed7088',
+        beige: {
+          DEFAULT: '#FFFAEE',
+          hover: '#fcf3dc',
+        },
         input: {
           background: '#0E1A1E',
           border: '#3E3E3E',

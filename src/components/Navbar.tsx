@@ -3,6 +3,7 @@
 import { FC } from 'react';
 
 import NavbarLink from '@/components/links/NavbarLink';
+import StakeButton from '@/components/StakeButton';
 import TradeButton from '@/components/TradeButton';
 
 const Navbar: FC = () => {
@@ -12,7 +13,8 @@ const Navbar: FC = () => {
       <NavbarLink href='/leaderboard'>Leaderboard</NavbarLink>
       <NavbarLink href='/stats'>Stats</NavbarLink>
       <NavbarLink href='/make-a-difference'>Make a Difference</NavbarLink>
-      <div className='absolute top-0 right-5 py-5 hidden md:block'>
+      <div className='absolute top-0 right-5 py-5 hidden xl:flex flex-col items-end space-y-3'>
+        <StakeButton />
         <TradeButton />
       </div>
     </div>

@@ -4,6 +4,7 @@ import '@/lib/env';
 import { FC } from 'react';
 
 import Friends from '@/components/Friends';
+import StakeButton from '@/components/StakeButton';
 import TradeButton from '@/components/TradeButton';
 
 const TradeCallout: FC = () => (
@@ -12,8 +13,10 @@ const TradeCallout: FC = () => (
       <Friends />
     </div>
     <div className='my-6'>
-      <TradeButton />
-      <p className='text-gray-400 text-sm mt-3'>
+      <div className='mb-3'>
+        <TradeButton />
+      </div>
+      <p className='text-gray-400 text-sm mb-5'>
         Using this referral link gives you a{' '}
         <a
           href='https://hyperliquid.gitbook.io/hyperliquid-docs/referrals'
@@ -25,8 +28,9 @@ const TradeCallout: FC = () => (
         </a>{' '}
         on your trading fees.
       </p>
+      <StakeButton />
     </div>
-    <div className='text-white mt-2 text-center text-sm'>
+    <div className='text-white text-center text-sm'>
       By{' '}
       <a
         href='https://twitter.com/janklimo'
