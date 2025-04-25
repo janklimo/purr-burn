@@ -6,31 +6,16 @@ import UnstyledLink, {
   UnstyledLinkProps,
 } from '@/components/links/UnstyledLink';
 
-interface UnderlineLinkProps extends UnstyledLinkProps {
-  dotted?: boolean;
-  borderColor?: string;
-}
-
-const UnderlineLink = React.forwardRef<HTMLAnchorElement, UnderlineLinkProps>(
-  (
-    {
-      children,
-      className,
-      dotted = true,
-      borderColor = 'border-hl-primary',
-      ...rest
-    },
-    ref,
-  ) => {
+const UnderlineLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
+  ({ children, className, dotted = true, ...rest }, ref) => {
     return (
       <UnstyledLink
         ref={ref}
         {...rest}
         className={cn(
-          'animated-underline font-medium pb-1 -mb-1',
+          'animated-underline font-medium pb-1',
           'focus-visible:ring-hl-primary focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-offset-2',
-          borderColor,
-          'border-b hover:border-black/0',
+          'border-hl-primary border-b hover:border-black/0',
           dotted && 'border-dotted',
           className,
         )}
